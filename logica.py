@@ -472,7 +472,7 @@ def posicionIdentificador(pLista,pIdentificador,posicion=0):
     elif(pLista[0]==pIdentificador):
         return posicion
     else:
-        return posicionIdentificador(pLista[1:],pIdentificador,posicion+1))
+        return posicionIdentificador(pLista[1:],pIdentificador,posicion+1)
 
 
 '''
