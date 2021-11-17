@@ -8,6 +8,8 @@ Estudiantes: Angela González Solano, 2021445876
 
 #Importar Librerías
 from tkinter import *
+import tkinter.font as tkFont
+import tkinter
 import generarCartones
 import consultarCarton
 import registrarJugador
@@ -119,61 +121,56 @@ def inicio():
     menuPrincipal.title("Bingo")
     menuPrincipal.config(bg="white")
     menuPrincipal.resizable(False, False)
-    window_width  = 300
-    window_height  = 400
+    window_width  = 510
+    window_height  = 700
     screen_width  = menuPrincipal.winfo_screenwidth()
     screen_height  = menuPrincipal.winfo_screenheight()
     position_top  = (screen_width /2) - (window_width /2)
     position_right  = (screen_height /2) - (window_height /2)
     menuPrincipal.geometry('%dx%d+%d+%d' % (window_width, window_height, position_top, position_right))
-    
-    label1=Label(menuPrincipal,text="           Bienvenido esto es el menú principal del juego.", bg="white", fg="black")
-    label1.grid(row=1,column=1)
-    
-    label2=Label(menuPrincipal,text="Por favor selecione una opción:", bg="white", fg="black")
-    label2.grid(row=2,column=1)
-    
-    label3=Label(menuPrincipal,text="   ", bg="white", fg="black")
-    label3.grid(row=3,column=1)
-    
-    botonIniciarSesion = Button(menuPrincipal,text="Generar cartones", command=generarCartonesMenu, bg="white", fg="black")
-    botonIniciarSesion.grid(row=4,column=1)
-    
-    label4=Label(menuPrincipal,text="   ", bg="white", fg="black")
-    label4.grid(row=5,column=1)
-    
-    consultarCarton = Button(menuPrincipal,text="Consultar Carton", command=consultarCartonMenu, bg="white", fg="black")
-    consultarCarton.grid(row=6,column=1)
 
-    label5=Label(menuPrincipal,text="   ", bg="white", fg="black")
-    label5.grid(row=7,column=1)
+    imgTitle = tkinter.PhotoImage(file="bingoImage.png")
+    imgTitle.configure()
+
+
+    lblTitulo = tkinter.Label(menuPrincipal,image=imgTitle)
+    lblTitulo.place(x=120,y=20)
+
+    theFont = tkFont.Font(family="Tahoma", size=16, weight="bold")
+    theFont2 = tkFont.Font(family="Segoe UI", size=12, weight="bold")
+    theFont3 = tkFont.Font(family="Segoe UI", size=11, weight="bold")
+    theFont4 = tkFont.Font(family="Segoe UI", size=13, weight="bold")
+
+    label1=Label(menuPrincipal,text="MENU PRINCIPAL", bg="white", fg="black")
+    label1.configure(font = theFont, fg = "#e51c22")
+    label1.place(x=145,y=300)
+
     
-    registrarJugador = Button(menuPrincipal,text="Registrar Jugador", command=registrarJugadorMenu, bg="white", fg="black")
-    registrarJugador.grid(row=8,column=1)
+    botonIniciarSesion = Button(menuPrincipal,text="CREAR CARTONES!", command=generarCartonesMenu, bg="#f0e823", fg="#d42158", font=theFont2)
+    botonIniciarSesion.place(x=70,y=350)
 
-    label6=Label(menuPrincipal,text="   ", bg="white", fg="black")
-    label6.grid(row=9,column=1)
+    consultarCarton = Button(menuPrincipal,text="BUSCAR CARTÓN!", command=consultarCartonMenu, bg="#f0e823", fg="#d42158", font=theFont2)
+    consultarCarton.place(x=275,y=350)
+    print("")
 
-    enviarCarton = Button(menuPrincipal,text="Enviar cartón", command=enviarCartonMenu, bg="white", fg="black")
-    enviarCarton.grid(row=10,column=1)
+    registrarJugador = Button(menuPrincipal,text=" AÑADIR JUGADOR!", command=registrarJugadorMenu, bg="#f0e823", fg="#d42158", font=theFont3)
+    registrarJugador.place(x=70,y=400)
 
-    label7=Label(menuPrincipal,text="   ", bg="white", fg="black")
-    label7.grid(row=11,column=1)
+
+    enviarCarton = Button(menuPrincipal,text="ENVIAR CARTÓN!", command=enviarCartonMenu, bg="#f0e823", fg="#d42158", font=theFont2)
+    enviarCarton.place(x=275,y=400)
+
     
-    iniciarPartida = Button(menuPrincipal,text="Iniciar Juego", command=iniciarUnaPartidaMenu, bg="white", fg="black")
-    iniciarPartida.grid(row=12,column=1)
+    iniciarPartida = Button(menuPrincipal,text="   INICIAR BINGO!   ", command=iniciarUnaPartidaMenu, bg="#E06D00", fg="#FFFFFF", font=theFont2)
+    iniciarPartida.place(x=70,y=450)
 
-    label8=Label(menuPrincipal,text="   ", bg="white", fg="black")
-    label8.grid(row=13,column=1)
     
-    graficos = Button(menuPrincipal,text="Menú graficos", command=graficosMenu, bg="white", fg="black")
-    graficos.grid(row=14,column=1)
+    graficos = Button(menuPrincipal,text="   ESTADÍSTICAS!  ", command=graficosMenu,bg="#f0e823", fg="#d42158", font=theFont2)
+    graficos.place(x=275,y=450)
 
-    label9=Label(menuPrincipal,text="   ", bg="white", fg="black")
-    label9.grid(row=15,column=1)
     
-    cerrarAplicacion = Button(menuPrincipal,text="Cerrar aplicación", command=cerrarAplicacionFuncion, bg="white", fg="black")
-    cerrarAplicacion.grid(row=16,column=1)
+    cerrarAplicacion = Button(menuPrincipal,text="SALIR", command=cerrarAplicacionFuncion, bg="#E00000", fg="#FFFFFF",font=theFont4)
+    cerrarAplicacion.place(x=360,y=610)
 
     menuPrincipal.mainloop()
 
