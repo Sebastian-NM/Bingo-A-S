@@ -6,7 +6,7 @@ Estudiantes: Angela González Solano, 2021445876
 '''
 
 
-#Importar Librerías
+# Importar Librerías
 from tkinter import *
 from tkinter import ttk
 import menuPrincipal as MP
@@ -14,58 +14,65 @@ import logica as logic
 import partida as game
 
 
-#Inicio variables globales
-iniciarJuegoPantalla="";
-premio=""
-label6=""
-juegoSelecionado=""
+# Inicio variables globales
+iniciarJuego = ""
+premio = ""
+mensaje = ""
+configuracionJuego = ""
 
 
 '''
-Entradas: premioText, juegoSeleccionadoText
+Entradas: premioText, configuracionJuegoText
 Salidas: game (interfaz) 
 Restriciones: premioText (str)
               premioText != ""
-              juegoSeleccionadoText (str)
-              juegoSeleccionadoText != ""
+              configuracionJuegoText (str)
+              configuracionJuegoText != ""
 '''
-#Genera solicitud de los requerimientos necesarios para iniciar una partida
-def generarFuncion():
-    global iniciarJuegoPantalla
+# Genera solicitud de los requerimientos necesarios para iniciar una partida
+
+
+def generarJuego():
+    global iniciarJuego
     global premio
-    global label6
-    global juegoSelecionado
+    global mensaje
+    global configuracionJuego
 
     premioText = premio.get()
-    juegoSeleccionadoText = juegoSelecionado.get()
-    
-    if(premioText!="50.000 colones" and premioText!=""):
-        if(logic.enviarTotalCartones()!=0):
-            logic.guardarDatosJuego(juegoSeleccionadoText,premioText)
-            label6.destroy()
-            label6=Label(iniciarJuegoPantalla,text=juegoSeleccionadoText, bg="white", fg="black")
-            label6.place(x=150,y=56)
-            iniciarJuegoPantalla.destroy()
-            game.inicio()
+    configuracionJuegoText = configuracionJuego.get()
+
+    if(premioText != "50.000 colones" and premioText != ""):
+        if(logic.enviarTotalCartones() != 0):
+            logic.guardarDatosJuego(configuracionJuegoText, premioText)
+            mensaje.destroy()
+            mensaje = Label(
+                iniciarJuego, text=configuracionJuegoText, bg="white", fg="black")
+            mensaje.place(x=150, y=56)
+            iniciarJuego.destroy()
+            game.iniciarPartidaBingo()
         else:
-            label6.destroy()
-            label6=Label(iniciarJuegoPantalla,text="No se puede iniciar el juego debido a que no existen cartones", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
-            label6.place(x=40,y=56)
+            mensaje.destroy()
+            mensaje = Label(iniciarJuego, text="No se puede iniciar el juego debido a que no existen cartones",
+                            fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+            mensaje.place(x=40, y=56)
     else:
-        label6.destroy()
-        label6=Label(iniciarJuegoPantalla,text="Complete la información solicitada", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
-        label6.place(x=120,y=56)
-        
+        mensaje.destroy()
+        mensaje = Label(iniciarJuego, text="Complete la información solicitada",
+                        fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+        mensaje.place(x=120, y=56)
+
 
 '''
-Entradas: iniciarJuegoPantalla
+Entradas: iniciarJuego
 Salidas: MP (interfaz) 
-Restriciones: iniciarJuegoPantalla (interfaz)
+Restriciones: iniciarJuego (interfaz)
 '''
-#Abre la interfaz gráfica MP         
+# Abre la interfaz gráfica MP
+
+
 def regresarFuncion():
-    global iniciarJuegoPantalla
-    iniciarJuegoPantalla.destroy()
+    global iniciarJuego
+    iniciarJuego.destroy()
     MP.inicio()
 
 
@@ -74,66 +81,76 @@ Entradas: event
 Salidas: se borra el contenido de premio (accion)
 Restriciones: event debe tener una interaccion con premio para su uso (accion)
 '''
-#Eliminación del contenido de cantidadCartones
+# Eliminación del contenido de cantidadCartones
+
+
 def clickpremio(event):
     premio.config(state=NORMAL)
-    premio.delete(0,END)
-  
-    
+    premio.delete(0, END)
+
+
 '''
-Entradas: iniciarJuegoPantalla
-Salidas: iniciarJuegoPantalla (interfaz) 
-Restriciones: iniciarJuegoPantalla (interfaz)
+Entradas: iniciarJuego
+Salidas: iniciarJuego (interfaz) 
+Restriciones: iniciarJuego (interfaz)
 '''
-#Crea la interfaz grafica 
-def inicio():
-    global iniciarJuegoPantalla
+# Crea la interfaz grafica
+
+
+def jugar():
+    global iniciarJuego
     global premio
-    global label6
-    global juegoSelecionado
+    global mensaje
+    global configuracionJuego
 
     logic.limpiarVariables()
-    iniciarJuegoPantalla=Tk()
-    iniciarJuegoPantalla.iconbitmap("bingo.ico")
-    iniciarJuegoPantalla.title("Iniciar Juego")
-    iniciarJuegoPantalla.config(bg="#B0E0E6")
-    iniciarJuegoPantalla.resizable(False, False)
-    window_width  = 470
-    window_height  = 120
-    screen_width  = iniciarJuegoPantalla.winfo_screenwidth()
-    screen_height  = iniciarJuegoPantalla.winfo_screenheight()
-    position_top  = (screen_width /2) - (window_width /2)
-    position_right  = (screen_height /2) - (window_height /2)
-    iniciarJuegoPantalla.geometry('%dx%d+%d+%d' % (window_width, window_height, position_top, position_right))
+    iniciarJuego = Tk()
+    iniciarJuego.iconbitmap("bingo.ico")
+    iniciarJuego.title("Iniciar Juego")
+    iniciarJuego.config(bg="#B0E0E6")
+    iniciarJuego.resizable(False, False)
+    window_width = 470
+    window_height = 120
+    screen_width = iniciarJuego.winfo_screenwidth()
+    screen_height = iniciarJuego.winfo_screenheight()
+    position_top = (screen_width / 2) - (window_width / 2)
+    position_right = (screen_height / 2) - (window_height / 2)
+    iniciarJuego.geometry('%dx%d+%d+%d' % (window_width,
+                          window_height, position_top, position_right))
 
-    label2=Label(iniciarJuegoPantalla,text="¡Juguemos!", bg="#B0E0E6", fg="black", font=("Finland", 12, 'bold'))
-    label2.place(x=200,y=5)
+    label2 = Label(iniciarJuego, text="¡Juguemos!", bg="#B0E0E6",
+                   fg="black", font=("Finland", 12, 'bold'))
+    label2.place(x=200, y=5)
 
-    label4=Label(iniciarJuegoPantalla,text="Configuración:", bg="#B0E0E6", fg="black", font=("Finland", 10))
-    label4.place(x=15,y=30)
+    label4 = Label(iniciarJuego, text="Configuración:",
+                   bg="#B0E0E6", fg="black", font=("Finland", 10))
+    label4.place(x=15, y=30)
 
-    choices = ['Jugar en X', 'Cuatro esquinas', 'Cartón lleno','Jugar en Z']
-    juegoSelecionado = ttk.Combobox(iniciarJuegoPantalla, values = choices)
-    juegoSelecionado.current(0)
-    juegoSelecionado.place(x=100,y=30)
+    choices = ['Jugar en X', 'Cuatro esquinas', 'Cartón lleno', 'Jugar en Z']
+    configuracionJuego = ttk.Combobox(iniciarJuego, values=choices)
+    configuracionJuego.current(0)
+    configuracionJuego.place(x=100, y=30)
 
-    label5=Label(iniciarJuegoPantalla,text="Premio:", bg="#B0E0E6", fg="black")
+    label5 = Label(iniciarJuego, text="Premio:", bg="#B0E0E6", fg="black")
     label5.place(x=250, y=30)
 
     premio_StringVar = StringVar()
-    premio = Entry(iniciarJuegoPantalla, bg="white", fg="black", textvariable=premio_StringVar, width="25")
-    premio.insert(0,"50.000 colones")
+    premio = Entry(iniciarJuego, bg="white", fg="black",
+                   textvariable=premio_StringVar, width="25")
+    premio.insert(0, "50.000 colones")
     premio.config(state=DISABLED)
-    premio.bind("<Button-1>",clickpremio)
-    premio.place(x=300,y=30)
+    premio.bind("<Button-1>", clickpremio)
+    premio.place(x=300, y=30)
 
-    botonIniciarSesion = Button(iniciarJuegoPantalla,text="Iniciar", command=generarFuncion, bg="#20B2AA", fg="black", font=("Finland", 10, 'bold'))
-    botonIniciarSesion.place(x=275,y=80)
+    botonIniciarSesion = Button(iniciarJuego, text="Iniciar", command=generarJuego,
+                                bg="#20B2AA", fg="black", font=("Finland", 10, 'bold'))
+    botonIniciarSesion.place(x=275, y=80)
 
-    botonCerrarAplicacion = Button(iniciarJuegoPantalla,text="Menú Principal", command=regresarFuncion, bg="#E00000", fg="#FFFFFF", font=("Finland", 10,'bold'))
-    botonCerrarAplicacion.place(x=130,y=80)
+    botonCerrarAplicacion = Button(iniciarJuego, text="Menú Principal", command=regresarFuncion,
+                                   bg="#E00000", fg="#FFFFFF", font=("Finland", 10, 'bold'))
+    botonCerrarAplicacion.place(x=130, y=80)
 
-    label6=Label(iniciarJuegoPantalla,text="", bg="#B0E0E6", fg="black")
-    label6.place(x=150,y=56)  
+    mensaje = Label(iniciarJuego, text="", bg="#B0E0E6", fg="black")
+    mensaje.place(x=150, y=56)
 
-    iniciarJuegoPantalla.mainloop()
+    iniciarJuego.mainloop()

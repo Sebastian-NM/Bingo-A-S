@@ -1,8 +1,3 @@
-from tkinter import *
-import menuPrincipal as MP
-import logica as logic
-
-
 '''
 Proyecto Programado 02
 Tema: Gestor de Bingos
@@ -10,6 +5,13 @@ Estudiantes: Angela González Solano, 2021445876
              Sebastián Navarro Martinez, 2021579550
 '''
 
+# Librería
+from tkinter import *
+import menuPrincipal as MP
+import logica as logic
+
+
+# Variables globales
 winGenerarCartones = ""
 lblInfoError = ""
 ntryCantidadCartones = 0
@@ -125,7 +127,7 @@ def interfaz():
     label2.place(x=10, y=10)
 
     lblTitle = Label(winGenerarCartones, text="Ingrese la cantidad de cartones que desea generar",
-                     bg="#B0E0E6", fg="black", font=("Segoe UI bold", 13))
+                     bg="#B0E0E6", fg="black", font=("Finland", 13))
     lblTitle.place(x=45, y=10)
 
     cantidadCartones_StringVar = StringVar()

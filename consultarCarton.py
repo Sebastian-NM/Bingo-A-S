@@ -91,7 +91,7 @@ Restriciones: menuPrincipal (interfaz)
 def regresarFuncion():
     global consultarCarton
     consultarCarton.destroy()
-    MP.buscarCarton()
+    MP.inicio()
 
 
 '''

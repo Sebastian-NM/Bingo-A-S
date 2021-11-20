@@ -92,7 +92,7 @@ Restriciones: enviarCartonesPantalla (interfaz)
 def regresarFuncion():
     global registrarJugador
     registrarJugador.destroy()
-    MP.registroJugador()
+    MP.inicio()
 
 
 '''
