@@ -49,12 +49,12 @@ def generarFuncion():
             game.inicio()
         else:
             label6.destroy()
-            label6=Label(iniciarJuegoPantalla,text="No se puede iniciar el juego ya que no existen cartones.", bg="white", fg="black")
-            label6.place(x=90,y=56)
+            label6=Label(iniciarJuegoPantalla,text="No se puede iniciar el juego debido a que no existen cartones", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+            label6.place(x=40,y=56)
     else:
         label6.destroy()
-        label6=Label(iniciarJuegoPantalla,text="Falta información por completar.", bg="white", fg="black")
-        label6.place(x=150,y=56)
+        label6=Label(iniciarJuegoPantalla,text="Complete la información solicitada", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+        label6.place(x=120,y=56)
         
 
 '''
@@ -94,8 +94,9 @@ def inicio():
 
     logic.limpiarVariables()
     iniciarJuegoPantalla=Tk()
-    iniciarJuegoPantalla.title("Bingo")
-    iniciarJuegoPantalla.config(bg="white")
+    iniciarJuegoPantalla.iconbitmap("bingo.ico")
+    iniciarJuegoPantalla.title("Iniciar Juego")
+    iniciarJuegoPantalla.config(bg="#B0E0E6")
     iniciarJuegoPantalla.resizable(False, False)
     window_width  = 470
     window_height  = 120
@@ -105,10 +106,10 @@ def inicio():
     position_right  = (screen_height /2) - (window_height /2)
     iniciarJuegoPantalla.geometry('%dx%d+%d+%d' % (window_width, window_height, position_top, position_right))
 
-    label2=Label(iniciarJuegoPantalla,text="Iniciar juego de Bingo", bg="white", fg="black")
-    label2.place(x=180,y=5)
+    label2=Label(iniciarJuegoPantalla,text="¡Juguemos!", bg="#B0E0E6", fg="black", font=("Finland", 12, 'bold'))
+    label2.place(x=200,y=5)
 
-    label4=Label(iniciarJuegoPantalla,text="Configuración:", bg="white", fg="black")
+    label4=Label(iniciarJuegoPantalla,text="Configuración:", bg="#B0E0E6", fg="black", font=("Finland", 10))
     label4.place(x=15,y=30)
 
     choices = ['Jugar en X', 'Cuatro esquinas', 'Cartón lleno','Jugar en Z']
@@ -116,7 +117,7 @@ def inicio():
     juegoSelecionado.current(0)
     juegoSelecionado.place(x=100,y=30)
 
-    label5=Label(iniciarJuegoPantalla,text="Premio:", bg="white", fg="black")
+    label5=Label(iniciarJuegoPantalla,text="Premio:", bg="#B0E0E6", fg="black")
     label5.place(x=250, y=30)
 
     premio_StringVar = StringVar()
@@ -126,11 +127,11 @@ def inicio():
     premio.bind("<Button-1>",clickpremio)
     premio.place(x=300,y=30)
 
-    botonIniciarSesion = Button(iniciarJuegoPantalla,text="Iniciar", command=generarFuncion, bg="white", fg="black")
-    botonIniciarSesion.place(x=180,y=80)
+    botonIniciarSesion = Button(iniciarJuegoPantalla,text="Iniciar", command=generarFuncion, bg="#20B2AA", fg="black", font=("Finland", 10, 'bold'))
+    botonIniciarSesion.place(x=275,y=80)
 
-    botonCerrarAplicacion = Button(iniciarJuegoPantalla,text="Regresar", command=regresarFuncion, bg="white", fg="black")
-    botonCerrarAplicacion.place(x=240,y=80)
+    botonCerrarAplicacion = Button(iniciarJuegoPantalla,text="Menú Principal", command=regresarFuncion, bg="#E00000", fg="#FFFFFF", font=("Finland", 10,'bold'))
+    botonCerrarAplicacion.place(x=130,y=80)
 
     label6=Label(iniciarJuegoPantalla,text="", bg="white", fg="black")
     label6.place(x=150,y=56)  

@@ -53,8 +53,8 @@ def generarFuncion():
                                     mostrarCantidadElementosCreados(cantidadCartonesText)
                                 else:
                                     label6.destroy()
-                                    label6=Label(enviarCartonesPantalla,text="No existen muchos cartones para repartir.", bg="white", fg="black")
-                                    label6.place(x=15,y=85)
+                                    label6=Label(enviarCartonesPantalla,text="No existen tantos cartones para repartir", bg="white", fg="black")
+                                    label6.place(x=85,y=65)
                             else:
                                 identificadores = logic.cantidadIdentificadoresLibres()
                                 cantidadIdentificadoresJugador = logic.cantidadCartonesJugador(cedulaText)
@@ -65,36 +65,36 @@ def generarFuncion():
                                         mostrarCantidadElementosCreados(cantidadCartonesText)
                                     else:
                                         label6.destroy()
-                                        label6=Label(enviarCartonesPantalla,text="El jugador no puede tener esa cantidad de cartones.", bg="white", fg="black")
-                                        label6.place(x=15,y=85)
+                                        label6=Label(enviarCartonesPantalla,text="El jugador no puede tener la cantidad de cartones ingresada", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+                                        label6.place(x=85,y=80)
                                 else:
                                     label6.destroy()
-                                    label6=Label(enviarCartonesPantalla,text="El jugador cuenta con 5 cartones registrados.", bg="white", fg="black")
-                                    label6.place(x=25,y=85)
+                                    label6=Label(enviarCartonesPantalla,text="El jugador ya cuenta con 5 cartones", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+                                    label6.place(x=85,y=80)
                         else:
                             label6.destroy()
-                            label6=Label(enviarCartonesPantalla,text="El jugador que se digitó no existe en el programa.", bg="white", fg="black")
-                            label6.place(x=30,y=85)
+                            label6=Label(enviarCartonesPantalla,text="La cédula ingresada no existe", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+                            label6.place(x=85,y=80)
                     else:
                         label6.destroy()
-                        label6=Label(enviarCartonesPantalla,text="No hay cartones para repartir.", bg="white", fg="black")
-                        label6.place(x=25,y=85)
+                        label6=Label(enviarCartonesPantalla,text="No existen cartones en el sistema", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+                        label6.place(x=65,y=80)
                 else:
                     label6.destroy()
-                    label6=Label(enviarCartonesPantalla,text="No existen jugadores ingresados en el progroma.", bg="white", fg="black")
-                    label6.place(x=30,y=85)
+                    label6=Label(enviarCartonesPantalla,text="No existen jugadores en el sistema", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+                    label6.place(x=65,y=80)
             else:
                 label6.destroy()
-                label6=Label(enviarCartonesPantalla,text="Se digitó una cédula que no es valida.", bg="white", fg="black")
-                label6.place(x=30,y=85)
+                label6=Label(enviarCartonesPantalla,text="Digite una cédula válida", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+                label6.place(x=88,y=80)
         else:
             label6.destroy()
-            label6=Label(enviarCartonesPantalla,text="Se digitó una cantidad que no es valida.", bg="white", fg="black")
-            label6.place(x=30,y=85)
+            label6=Label(enviarCartonesPantalla,text="Digite una cantidad válida", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+            label6.place(x=85,y=80)
     else:
         label6.destroy()
-        label6=Label(enviarCartonesPantalla,text="Falta información por completar.", bg="white", fg="black")
-        label6.place(x=30,y=85)
+        label6=Label(enviarCartonesPantalla,text="Ingrese la información solicitada", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+        label6.place(x=60,y=80)
 
 
 '''
@@ -109,12 +109,12 @@ def mostrarCantidadElementosCreados(pCantidad):
 
     if(pCantidad==1):
         label6.destroy()
-        label6=Label(enviarCartonesPantalla,text="Se envió: "+str(pCantidad)+" carton al jugador.", bg="white", fg="black")
-        label6.place(x=30,y=85)
+        label6=Label(enviarCartonesPantalla,text="Se envió "+str(pCantidad)+" carton al jugador", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+        label6.place(x=68,y=80)
     else:
         label6.destroy()
-        label6=Label(enviarCartonesPantalla,text="Se enviaron: "+str(pCantidad)+" cartones al jugador.", bg="white", fg="black")
-        label6.place(x=30,y=85)
+        label6=Label(enviarCartonesPantalla,text="Se enviaron "+str(pCantidad)+" cartones al jugador", fg="black", bg="#B0E0E6", font=("Finland", 10, 'bold'))
+        label6.place(x=55,y=80)
     
 
 '''
@@ -165,10 +165,11 @@ def inicio():
     
     logic.listaIdentificadoresLibres()
     enviarCartonesPantalla=Tk()
-    enviarCartonesPantalla.title("Bingo")
-    enviarCartonesPantalla.config(bg="white")
+    enviarCartonesPantalla.iconbitmap("bingo.ico")
+    enviarCartonesPantalla.title("Enviar Cartones")
+    enviarCartonesPantalla.config(bg="#B0E0E6")
     enviarCartonesPantalla.resizable(False, False)
-    window_width  = 300
+    window_width  = 350
     window_height  = 150
     screen_width  = enviarCartonesPantalla.winfo_screenwidth()
     screen_height  = enviarCartonesPantalla.winfo_screenheight()
@@ -176,12 +177,9 @@ def inicio():
     position_right  = (screen_height /2) - (window_height /2)
 
     enviarCartonesPantalla.geometry('%dx%d+%d+%d' % (window_width, window_height, position_top, position_right))
-
-    label2=Label(enviarCartonesPantalla,text="Enviar cartón a jugador registrado", bg="white", fg="black")
-    label2.place(x=60,y=5)
   
-    label4=Label(enviarCartonesPantalla,text="Cantidad:", bg="white", fg="black")
-    label4.place(x=30,y=30)
+    label4=Label(enviarCartonesPantalla,text="Cantidad a enviar:", fg="black", bg="#B0E0E6", font=("Finland", 10))
+    label4.place(x=30,y=20)
 
     cantidadCartones_StringVar = StringVar()
 
@@ -189,10 +187,10 @@ def inicio():
     cantidadCartones.insert(0,"Valor entre 1 y 5")
     cantidadCartones.config(state=DISABLED)
     cantidadCartones.bind("<Button-1>",clickCantidad)
-    cantidadCartones.place(x=100,y=30)
+    cantidadCartones.place(x=155,y=22)
  
-    label5=Label(enviarCartonesPantalla,text="Cédula:", bg="white", fg="black")
-    label5.place(x=30,y=60)
+    label5=Label(enviarCartonesPantalla,text="Cédula del jugador:", fg="black", bg="#B0E0E6", font=("Finland", 10))
+    label5.place(x=30,y=50)
 
     cedula_StringVar = StringVar()
 
@@ -200,15 +198,15 @@ def inicio():
     cedula.insert(0,"Ejemplo: 103250410")
     cedula.config(state=DISABLED)
     cedula.bind("<Button-1>",clickCedula)
-    cedula.place(x=100,y=62)
+    cedula.place(x=155,y=52)
 
-    botonIniciarSesion = Button(enviarCartonesPantalla,text="Enviar cartones digitales", command=generarFuncion, bg="white", fg="black")
-    botonIniciarSesion.place(x=40,y=110)
+    botonIniciarSesion = Button(enviarCartonesPantalla,text="Enviar", command=generarFuncion, bg="#20B2AA", fg="black", font=("Finland", 10, 'bold'))
+    botonIniciarSesion.place(x=230,y=112)
 
-    botonCerrarAplicacion = Button(enviarCartonesPantalla,text="Regresar", command=regresarFuncion, bg="white", fg="black")
-    botonCerrarAplicacion.place(x=200,y=110)
+    botonCerrarAplicacion = Button(enviarCartonesPantalla,text="Menú Principal", command=regresarFuncion, bg="#E00000", fg="#FFFFFF", font=("Finland", 10,'bold'))
+    botonCerrarAplicacion.place(x=40,y=112)
 
-    label6=Label(enviarCartonesPantalla,text="", bg="white", fg="black")
+    label6=Label(enviarCartonesPantalla,text="", fg="black", bg="#B0E0E6", font=("Finland", 10))
     label6.place(x=30,y=85)  
 
     enviarCartonesPantalla.mainloop()

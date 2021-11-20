@@ -118,11 +118,12 @@ def inicio():
     
     global menuPrincipal
     menuPrincipal=Tk()
+    menuPrincipal.iconbitmap("bingo.ico")
     menuPrincipal.title("Bingo")
     menuPrincipal.config(bg="white")
     menuPrincipal.resizable(False, False)
     window_width  = 510
-    window_height  = 700
+    window_height  = 600
     screen_width  = menuPrincipal.winfo_screenwidth()
     screen_height  = menuPrincipal.winfo_screenheight()
     position_top  = (screen_width /2) - (window_width /2)
@@ -169,8 +170,8 @@ def inicio():
     graficos.place(x=275,y=450)
 
     
-    cerrarAplicacion = Button(menuPrincipal,text="SALIR", command=cerrarAplicacionFuncion, bg="#E00000", fg="#FFFFFF",font=theFont4)
-    cerrarAplicacion.place(x=360,y=610)
+    cerrarAplicacion = Button(menuPrincipal,text="                              SALIR                              ", command=cerrarAplicacionFuncion, bg="#E00000", fg="#FFFFFF",font=theFont4)
+    cerrarAplicacion.place(x=70,y=530)
 
     menuPrincipal.mainloop()
 

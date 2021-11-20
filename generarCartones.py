@@ -40,24 +40,24 @@ def generarFuncion():
                 
                 if(cantidadCartonesText==1):
                     label3.destroy()
-                    label3=Label(generarCartonesPantalla,text="Se creo: "+str(cantidadCartonesText)+" tabla.", bg="white", fg="black")
-                    label3.place(x=50,y=60)                   
+                    label3=Label(generarCartonesPantalla,text="Se creó "+str(cantidadCartonesText)+" cartón", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+                    label3.place(x=250,y=40)                   
                 else:
                     label3.destroy()
-                    label3=Label(generarCartonesPantalla,text="Se crearon: "+str(cantidadCartonesText)+" tablas.", bg="white", fg="black")
-                    label3.place(x=50,y=60)
+                    label3=Label(generarCartonesPantalla,text="Se crearon "+str(cantidadCartonesText)+" cartones", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+                    label3.place(x=230,y=40)
             else:
                 label3.destroy()
-                label3=Label(generarCartonesPantalla,text="Debes de digitar un número entre 1 a 500.", bg="white", fg="black")
-                label3.place(x=50,y=60)
+                label3=Label(generarCartonesPantalla,text="Debe de digitar un número entre 1 y 500.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+                label3.place(x=150,y=40)
         else:
             label3.destroy()
-            label3=Label(generarCartonesPantalla,text="Digitaste un valor que no esta permitido.", bg="white", fg="black")
-            label3.place(x=50,y=60)
+            label3=Label(generarCartonesPantalla,text="Digite un valor válido.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+            label3.place(x=230,y=40)
     else:
         label3.destroy()
-        label3=Label(generarCartonesPantalla,text="No se digitó nada, por favor intentelo de nuevo.", bg="white", fg="black")
-        label3.place(x=50,y=60)
+        label3=Label(generarCartonesPantalla,text="Ingrese el número de cartones a generar.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+        label3.place(x=150,y=40)
 
          
 '''
@@ -97,37 +97,38 @@ def inicio():
     logic.eliminarRegistros()
     logic.eliminarCarpetaCartones()
     generarCartonesPantalla=Tk()
-    generarCartonesPantalla.title("Bingo")
-    generarCartonesPantalla.config(bg="white")
+    generarCartonesPantalla.iconbitmap("bingo.ico")
+    generarCartonesPantalla.title("Generar Cartones de Bingo")
+    generarCartonesPantalla.config(bg="#B0E0E6")
     generarCartonesPantalla.resizable(False, False)
-    window_width  = 400
-    window_height  = 100
+    window_width  = 600
+    window_height  = 130
     screen_width  = generarCartonesPantalla.winfo_screenwidth()
     screen_height  = generarCartonesPantalla.winfo_screenheight()
     position_top  = (screen_width /2) - (window_width /2)
     position_right  = (screen_height /2) - (window_height /2)
     generarCartonesPantalla.geometry('%dx%d+%d+%d' % (window_width, window_height, position_top, position_right))
 
-    label2=Label(generarCartonesPantalla,text="Generar Los cartones de Bingo", bg="white", fg="black")
+    label2=Label(generarCartonesPantalla,text="", bg="#B0E0E6", fg="black", font=("Finland", 10))
     label2.place(x=10,y=10)
 
-    label3=Label(generarCartonesPantalla,text="Cantidad:", bg="white", fg="black")
-    label3.place(x=30,y=30)
+    label3=Label(generarCartonesPantalla,text="Ingrese la cantidad de cartones que desea generar:", bg="#B0E0E6", fg="black", font=("Finland", 10))
+    label3.place(x=20,y=10)
 
     cantidadCartones_StringVar = StringVar()
     cantidadCartones = Entry(generarCartonesPantalla, bg="white", fg="black", textvariable=cantidadCartones_StringVar, width="25")
     cantidadCartones.insert(0,"Valor entre 1 y 500")
     cantidadCartones.config(state=DISABLED)
     cantidadCartones.bind("<Button-1>",clickCantidadCartones)
-    cantidadCartones.place(x=100,y=32)
+    cantidadCartones.place(x=330,y=13)
 
-    botonIniciarSesion = Button(generarCartonesPantalla,text="Generar", command=generarFuncion, bg="white", fg="black")
-    botonIniciarSesion.place(x=340,y=28)
+    botonIniciarSesion = Button(generarCartonesPantalla,text="Generar", command=generarFuncion, bg="#20B2AA", fg="black", font=("Finland", 10, 'bold'))
+    botonIniciarSesion.place(x=350,y=80)
 
-    botonCerrarAplicacion = Button(generarCartonesPantalla,text="Regresar", command=regresarFuncion, bg="white", fg="black")
-    botonCerrarAplicacion.place(x=337,y=60)
+    botonCerrarAplicacion = Button(generarCartonesPantalla,text="Menú Principal", command=regresarFuncion, bg="#E00000", fg="#FFFFFF", font=("Finland", 10, 'bold'))
+    botonCerrarAplicacion.place(x=150,y=80)
 
-    label3=Label(generarCartonesPantalla,text="", bg="white", fg="black")
+    label3=Label(generarCartonesPantalla,text="", bg="#B0E0E6", fg="black", font=("Finland", 10))
     label3.place(x=50,y=60)
 
     generarCartonesPantalla.mainloop()

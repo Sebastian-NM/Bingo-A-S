@@ -7,7 +7,7 @@ Estudiantes: Angela González Solano, 2021445876
 
 #Importar Librerías
 from tkinter import *
-from PIL  import Image, ImageTk
+from PIL import Image, ImageTk
 import menuPrincipal as MP
 import logica as logic
 
@@ -44,16 +44,16 @@ def mostrarCarton():
                     if(logic.identificarJugadorConCarton(identificacionText)):
                         cartonJugador = logic.extraerIdentificadorJugadorConCarton(identificacionText)
                         label7.destroy()
-                        label7=Label(consultarCartonPantalla,text="Dueño del carton: "+str(cartonJugador[1])+" ,cedula: "+str(cartonJugador[0])+".", bg="white", fg="black")
+                        label7=Label(consultarCartonPantalla,text="Dueño del cartón: "+str(cartonJugador[1])+" , cédula: "+str(cartonJugador[0])+".", bg="#B0E0E6", fg="black", font=("Finland", 10))
                         label7.place(x=40,y=350)
                     else:
                         label7.destroy()
-                        label7=Label(consultarCartonPantalla,text="", bg="white", fg="black")
+                        label7=Label(consultarCartonPantalla,text="", bg="#B0E0E6", fg="black", font=("Finland", 10))
                         label7.place(x=40,y=350)
                     
                     label3.destroy()
-                    label3=Label(consultarCartonPantalla,text="Se encontró la imagen.", bg="white", fg="black")
-                    label3.place(x=50,y=60)
+                    label3=Label(consultarCartonPantalla,text="Se encontró la imagen.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+                    label3.place(x=150,y=50)
 
                     frameImagen.destroy()
 
@@ -67,20 +67,20 @@ def mostrarCarton():
                     consultarCartonPantalla.mainloop()
                 else:
                     label3.destroy()
-                    label3=Label(consultarCartonPantalla,text="El cartón que desea consultar no existe.", bg="white", fg="black")
-                    label3.place(x=50,y=60)
+                    label3=Label(consultarCartonPantalla,text="El número de cartón es incorrecto.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+                    label3.place(x=120,y=50)
             else:
                 label3.destroy()
-                label3=Label(consultarCartonPantalla,text="No es posible enontrar el carton debido a que no se an creado cartones.", bg="white", fg="black")
-                label3.place(x=50,y=60)
+                label3=Label(consultarCartonPantalla,text="No existen cartones creados en el sistema.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+                label3.place(x=65,y=50)
         else:
             label3.destroy()
-            label3=Label(consultarCartonPantalla,text="Se ingreso una identificación que no es valida.", bg="white", fg="black")
-            label3.place(x=50,y=60)
+            label3=Label(consultarCartonPantalla,text="Ingrese un número de cartón válido.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+            label3.place(x=105,y=50)
     else:
         label3.destroy()
-        label3=Label(consultarCartonPantalla,text="No se digitó nada, por favor intentelo de nuevo.", bg="white", fg="black")
-        label3.place(x=50,y=60)
+        label3=Label(consultarCartonPantalla,text="Por favor ingrese el número de cartón a consultar.", bg="#B0E0E6", fg="black", font=("Finland", 10, 'bold'))
+        label3.place(x=65,y=50)
 
 
 '''
@@ -120,8 +120,9 @@ def inicio():
     global label7
 
     consultarCartonPantalla=Tk()
-    consultarCartonPantalla.title("Bingo")
-    consultarCartonPantalla.config(bg="white")
+    consultarCartonPantalla.iconbitmap("bingo.ico")
+    consultarCartonPantalla.title("Consultar Cartones")
+    consultarCartonPantalla.config(bg="#B0E0E6")
     consultarCartonPantalla.resizable(False, False)
     window_width  = 450
     window_height  = 405
@@ -130,12 +131,9 @@ def inicio():
     position_top  = (screen_width /2) - (window_width /2)
     position_right  = (screen_height /2) - (window_height /2)
     consultarCartonPantalla.geometry('%dx%d+%d+%d' % (window_width, window_height, position_top, position_right))
-
-    label2=Label(consultarCartonPantalla,text="Consultar Cartones", bg="white", fg="black")
-    label2.place(x=20,y=5)
   
-    label4=Label(consultarCartonPantalla,text="Identificación:", bg="white", fg="black")
-    label4.place(x=30,y=30)
+    label4=Label(consultarCartonPantalla,text="Ingrese el número de cartón:", fg="black", bg="#B0E0E6", font=("Finland", 10))
+    label4.place(x=30,y=20)
 
     identificacionCartones_StringVar = StringVar()
     
@@ -143,21 +141,21 @@ def inicio():
     identificacion.insert(0,"Ejemplo: NCC004")
     identificacion.config(state=DISABLED)
     identificacion.bind("<Button-1>",clickIdentificar)
-    identificacion.place(x=120,y=32)
+    identificacion.place(x=205,y=22)
 
-    botonIniciarSesion = Button(consultarCartonPantalla,text="Mostrar", command=mostrarCarton, bg="white", fg="black")
-    botonIniciarSesion.place(x=380,y=30)
+    botonIniciarSesion = Button(consultarCartonPantalla,text="Buscar", command=mostrarCarton, bg="#20B2AA", fg="black", font=("Finland", 10, 'bold'))
+    botonIniciarSesion.place(x=380,y=17)
 
-    botonCerrarAplicacion = Button(consultarCartonPantalla,text="Regresar", command=regresarFuncion, bg="white", fg="black")
-    botonCerrarAplicacion.place(x=376,y=370)
+    botonCerrarAplicacion = Button(consultarCartonPantalla,text="Menú Principal", command=regresarFuncion, bg="#E00000", fg="#FFFFFF", font=("Finland", 10,'bold'))
+    botonCerrarAplicacion.place(x=176,y=370)
   
     frameImagen = Frame(consultarCartonPantalla, width = 370, height=260);
     frameImagen.place(x="40", y="80");
  
-    label3=Label(consultarCartonPantalla,text="", bg="white", fg="black")
-    label3.place(x=50,y=60)
+    label3=Label(consultarCartonPantalla,text="", bg="#B0E0E6", fg="black", font=("Finland", 10))
+    label3.place(x=40,y=45) 
 
-    label7=Label(consultarCartonPantalla,text="", bg="white", fg="black")
+    label7=Label(consultarCartonPantalla,text="", bg="#B0E0E6", fg="black", font=("Finland", 10))
     label7.place(x=40,y=350)
 
     consultarCartonPantalla.mainloop()
