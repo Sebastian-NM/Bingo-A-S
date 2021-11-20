@@ -133,7 +133,7 @@ def inicio():
     botonCerrarAplicacion = Button(iniciarJuegoPantalla,text="Menú Principal", command=regresarFuncion, bg="#E00000", fg="#FFFFFF", font=("Finland", 10,'bold'))
     botonCerrarAplicacion.place(x=130,y=80)
 
-    label6=Label(iniciarJuegoPantalla,text="", bg="white", fg="black")
+    label6=Label(iniciarJuegoPantalla,text="", bg="#B0E0E6", fg="black")
     label6.place(x=150,y=56)  
 
     iniciarJuegoPantalla.mainloop()
