@@ -33,7 +33,7 @@ Restriciones: menuPrincipal (interfaz)
 def generarCartonesMenu():
     global menuPrincipal
     menuPrincipal.destroy()
-    generarCartones.inicio()
+    generarCartones.interfaz()
 
 
 '''
