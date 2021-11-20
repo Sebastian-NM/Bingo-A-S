@@ -23,21 +23,21 @@ mensaje = ""
 
 '''
 Entradas: pEmailJugador
-Salidas: emailJugador es valido (bool)
+Salidas: pEmailJugador es true or false (bool)
 Restriciones: pEmailJugador (str)
               pEmailJugador != ""
 '''
 # Genera un juegador en el sistema
 
 
-def identificarEmailJugador(pEmailJugador):
+def validarEmailJugador(pEmailJugador):
     if re.match('^[(a-z0-9\_\-\.)]+@[(a-z0-9\_\-\.)]+\.[(a-z)]{2,15}$', pEmailJugador.lower()):
         return True
     else:
         return False
 
 
-def generarFuncion():
+def validarRegistro():
     global registrarJugador
     global nomJugador
     global cedJugador
@@ -50,7 +50,7 @@ def generarFuncion():
 
     if(nomJugadorText != "" and cedJugadorText != "" and emailJugadorText != "" and nomJugadorText != "Luis Soto" and emailJugadorText != "luis@gmail.com" and cedJugadorText != "103250410"):
         if(len(cedJugadorText) == 9 and cedJugadorText.isnumeric()):
-            if(identificarEmailJugador(emailJugadorText)):
+            if(validarEmailJugador(emailJugadorText)):
                 if(logic.existeJugador(cedJugadorText) == False):
                     logic.crearJugador(
                         nomJugadorText, cedJugadorText, emailJugadorText)
@@ -92,7 +92,7 @@ Restriciones: enviarCartonesPantalla (interfaz)
 def regresarFuncion():
     global registrarJugador
     registrarJugador.destroy()
-    MP.inicio()
+    MP.registroJugador()
 
 
 '''
@@ -142,7 +142,7 @@ Restriciones: consultarCartonPantalla (interfaz)
 # Crea la interfaz grafica
 
 
-def inicio():
+def registroJugador():
     global registrarJugador
     global nomJugador
     global cedJugador
@@ -199,7 +199,7 @@ def inicio():
     emailJugador.bind("<Button-1>", clickEmailJugador)
     emailJugador.place(x=100, y=82)
 
-    botonIniciarSesion = Button(registrarJugador, text="Guardar", command=generarFuncion,
+    botonIniciarSesion = Button(registrarJugador, text="Guardar", command=validarRegistro,
                                 bg="#20B2AA", fg="black", font=("Finland", 10, 'bold'))
     botonIniciarSesion.place(x=230, y=150)
 

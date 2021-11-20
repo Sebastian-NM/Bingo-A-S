@@ -45,7 +45,7 @@ Restriciones: menuPrincipal (interfaz)
 def consultarCartonMenu():
     global menuPrincipal
     menuPrincipal.destroy()
-    consultarCarton.inicio()
+    consultarCarton.buscarCarton()
 
 
 '''
@@ -57,7 +57,7 @@ Restriciones: menuPrincipal (interfaz)
 def registrarJugadorMenu():
     global menuPrincipal
     menuPrincipal.destroy()
-    registrarJugador.inicio()
+    registrarJugador.registroJugador()
 
 
 '''
