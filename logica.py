@@ -979,7 +979,7 @@ def enviarCorreoGanadores(pNombre,pCarton,pDestinatario):
         with smtplib.SMTP('smtp.gmail.com', 587) as smtpObj:
             smtpObj.ehlo()
             smtpObj.starttls()
-            smtpObj.login("bingoproyecto2@gmail.com", "Tecdigital")
+            smtpObj.login("bingoproyecto2@gmail.com", "chocofresa526")
             smtpObj.sendmail(sender_email, receiver_email, msg.as_string())
     except Exception as e:
         print(e)
