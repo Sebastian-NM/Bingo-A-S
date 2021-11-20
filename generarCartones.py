@@ -38,23 +38,23 @@ def generarFuncion():
                 
                 if(ntryCantidadCartonesGetter==1):
                     lblInfoError.destroy()
-                    lblInfoError=Label(winGenerarCartones,text="Se creó "+str(ntryCantidadCartonesGetter)+" cartón", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="#0EA928")
+                    lblInfoError=Label(winGenerarCartones,text="Se creó "+str(ntryCantidadCartonesGetter)+" cartón", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="black")
                     lblInfoError.place(x=200,y=120)                   
                 else:
                     lblInfoError.destroy()
-                    lblInfoError=Label(winGenerarCartones,text="Se crearon "+str(ntryCantidadCartonesGetter)+" cartones", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="#0EA928")
+                    lblInfoError=Label(winGenerarCartones,text="Se crearon "+str(ntryCantidadCartonesGetter)+" cartones", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="black")
                     lblInfoError.place(x=180,y=120)
             else:
                 lblInfoError.destroy()
-                lblInfoError=Label(winGenerarCartones,text="El rango aceptado es de 1 a 500 cartones", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="#C8420E")
+                lblInfoError=Label(winGenerarCartones,text="El rango aceptado es de 1 a 500 cartones", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="black")
                 lblInfoError.place(x=110,y=120)
         else:
             lblInfoError.destroy()
-            lblInfoError=Label(winGenerarCartones,text="Valor inválido", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="#C8420E")
+            lblInfoError=Label(winGenerarCartones,text="Valor inválido", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="black")
             lblInfoError.place(x=200,y=120)
     else:
         lblInfoError.destroy()
-        lblInfoError=Label(winGenerarCartones,text="Ingrese un valor para continuar", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="#C8420E")
+        lblInfoError=Label(winGenerarCartones,text="Ingrese un valor para continuar", bg="#B0E0E6", font=("Finland", 10, 'bold'), fg ="black")
         lblInfoError.place(x=150,y=120)
 
 
@@ -100,8 +100,8 @@ def interfaz():
     winGenerarCartones.title("Generar Cartones")
     winGenerarCartones.config(bg="#B0E0E6")
     winGenerarCartones.resizable(False, False)
-    window_width  = 510
-    window_height  = 400
+    window_width  = 500
+    window_height  = 150
     
     #Centrar interfaz en el centro de la botella 
     screen_width  = winGenerarCartones.winfo_screenwidth()
@@ -123,12 +123,11 @@ def interfaz():
     ntryCantidadCartones.config(width=65)
     ntryCantidadCartones.place(x=50,y=45)
 
-    btnGenerar = Button(winGenerarCartones,text="Generar", command=generarFuncion, bg="#20B2AA", fg="black", font=("Finland", 11, 'bold'))
-    btnGenerar.config(width=35)
+    btnGenerar = Button(winGenerarCartones,text="         Generar         ", command=generarFuncion, bg="#20B2AA", fg="black", font=("Finland", 11, 'bold'))
     btnGenerar.place(x=80,y=80)
 
-    btnVolver = Button(winGenerarCartones,text="             Volver             ", command=goBackButton, bg="#E00000", fg="#FFFFFF", font=("Finland", 11, 'bold'))
-    btnVolver.place(x=170,y=300)
+    btnVolver = Button(winGenerarCartones,text="    Menú Principal    ", command=goBackButton, bg="#E00000", fg="#FFFFFF", font=("Finland", 11, 'bold'))
+    btnVolver.place(x=270,y=80)
 
     lblInfoError=Label(winGenerarCartones,text="", bg="#B0E0E6", fg="black", font=("Finland", 10))
     lblInfoError.place(x=50,y=100)
