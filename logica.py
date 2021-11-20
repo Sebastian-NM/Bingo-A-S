@@ -656,7 +656,7 @@ def enviarCartonesPorCorreo(pCedula):
 
     listaCartones = jugadoresConCartones[pCedula]
 
-    sender_email = "bingoproyecto2@gmail.com"
+    sender_email = "bingoitcr.as01@gmail.com"
     receiver_email =  jugadores[pCedula][1]
 
     msg = MIMEMultipart()
@@ -679,7 +679,7 @@ def enviarCartonesPorCorreo(pCedula):
         with smtplib.SMTP('smtp.gmail.com', 587) as smtpObj:
             smtpObj.ehlo()
             smtpObj.starttls()
-            smtpObj.login("bingoproyecto2@gmail.com", "Tecdigital")
+            smtpObj.login("bingoitcr.as01@gmail.com", "Chocofresa526")
             smtpObj.sendmail(sender_email, receiver_email, msg.as_string())
     except Exception as e:
         print(e)
@@ -958,7 +958,7 @@ def enviarCorreoGanadores(pNombre,pCarton,pDestinatario):
     global tipoJuego
     global premio
 
-    sender_email = "bingoproyecto2@gmail.com"
+    sender_email = "bingoitcr.as01@gmail.com"
     receiver_email =  pDestinatario
 
     msg = MIMEMultipart()
@@ -979,7 +979,7 @@ def enviarCorreoGanadores(pNombre,pCarton,pDestinatario):
         with smtplib.SMTP('smtp.gmail.com', 587) as smtpObj:
             smtpObj.ehlo()
             smtpObj.starttls()
-            smtpObj.login("bingoproyecto2@gmail.com", "chocofresa526")
+            smtpObj.login("bingoitcr.as01@gmail.com", "Chocofresa526")
             smtpObj.sendmail(sender_email, receiver_email, msg.as_string())
     except Exception as e:
         print(e)
