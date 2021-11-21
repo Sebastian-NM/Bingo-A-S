@@ -1059,12 +1059,11 @@ def enviarCorreoGanadores(pNombre, pCarton, pDestinatario):
     receiver_email = pDestinatario
 
     msg = MIMEMultipart()
-    msg['Subject'] = 'Bingo, ¡felicidades eres un ganador!'
+    msg['Subject'] = '¡Has ganado el bingo!'
     msg['From'] = sender_email
     msg['To'] = receiver_email
 
-    msgText = MIMEText('¡Hola '+pNombre + "!\n has ganado la partida de bingo en la modalidad de "+str(tipoJuego) +
-                       ". Tu premio corresponde a: "+str(premio) + "\n¡Felicidades!")
+    msgText = MIMEText('¡Felicidades '+pNombre + "!\n has ganado en "+str(tipoJuego) + ". Tu premio corresponde a: "+str(premio))
     msg.attach(msgText)
 
     with open('cartones/'+pCarton+'.png', 'rb') as fp:

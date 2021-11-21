@@ -216,7 +216,7 @@ def enviarCartonesJugador():
 
     cantidadCartones = Entry(enviarCartones, bg="white", fg="black",
                              textvariable=cantidadCartones_StringVar, width="25")
-    cantidadCartones.insert(0, "Valor entre 1 y 5")
+    cantidadCartones.insert(0, "1-5")
     cantidadCartones.config(state=DISABLED)
     cantidadCartones.bind("<Button-1>", clickCantidad)
     cantidadCartones.place(x=155, y=22)
@@ -229,7 +229,7 @@ def enviarCartonesJugador():
 
     cedJugador = Entry(enviarCartones, bg="white", fg="black",
                        textvariable=cedJugador_StringVar, width="25")
-    cedJugador.insert(0, "Ejemplo: 103250410")
+    cedJugador.insert(0, "X0XXX0XXX")
     cedJugador.config(state=DISABLED)
     cedJugador.bind("<Button-1>", clickCedJugador)
     cedJugador.place(x=155, y=52)

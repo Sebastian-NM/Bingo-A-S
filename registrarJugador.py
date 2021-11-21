@@ -170,7 +170,7 @@ def registroJugador():
     nomJugador_StringVar = StringVar()
     nomJugador = Entry(registrarJugador, bg="white", fg="black",
                        textvariable=nomJugador_StringVar, width="38")
-    nomJugador.insert(0, "Luis Soto")
+    nomJugador.insert(0, "Tu nombre completo")
     nomJugador.config(state=DISABLED)
     nomJugador.bind("<Button-1>", clickNomJugador)
     nomJugador.place(x=100, y=22)
@@ -182,7 +182,7 @@ def registroJugador():
     cedJugador_StringVar = StringVar()
     cedJugador = Entry(registrarJugador, bg="white", fg="black",
                        textvariable=cedJugador_StringVar, width="38")
-    cedJugador.insert(0, "103250410")
+    cedJugador.insert(0, "X0XXX0XXX")
     cedJugador.config(state=DISABLED)
     cedJugador.bind("<Button-1>", clickCedJugador)
     cedJugador.place(x=100, y=52)
@@ -194,7 +194,7 @@ def registroJugador():
     emailJugador_StringVar = StringVar()
     emailJugador = Entry(registrarJugador, bg="white", fg="black",
                          textvariable=emailJugador_StringVar, width="38")
-    emailJugador.insert(0, "luis@gmail.com")
+    emailJugador.insert(0, "tucorreo@mail.com")
     emailJugador.config(state=DISABLED)
     emailJugador.bind("<Button-1>", clickEmailJugador)
     emailJugador.place(x=100, y=82)

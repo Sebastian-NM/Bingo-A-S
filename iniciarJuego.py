@@ -41,7 +41,7 @@ def generarJuego():
     premioText = premio.get()
     configuracionJuegoText = configuracionJuego.get()
 
-    if(premioText != "50.000 colones" and premioText != ""):
+    if(premioText != "100000" and premioText != ""):
         if(logic.enviarTotalCartones() != 0):
             logic.guardarDatosJuego(configuracionJuegoText, premioText)
             mensaje.destroy()
@@ -127,7 +127,7 @@ def jugar():
     label4.place(x=15, y=30)
 
     choices = ['Jugar en X', 'Cuatro esquinas', 'Cartón lleno', 'Jugar en Z']
-    configuracionJuego = ttk.Combobox(iniciarJuego, values=choices)
+    configuracionJuego = ttk.Combobox(iniciarJuego, values=choices, state="readonly")
     configuracionJuego.current(0)
     configuracionJuego.place(x=100, y=30)
 
@@ -137,7 +137,7 @@ def jugar():
     premio_StringVar = StringVar()
     premio = Entry(iniciarJuego, bg="white", fg="black",
                    textvariable=premio_StringVar, width="25")
-    premio.insert(0, "50.000 colones")
+    premio.insert(0, "100000")
     premio.config(state=DISABLED)
     premio.bind("<Button-1>", clickpremio)
     premio.place(x=300, y=30)

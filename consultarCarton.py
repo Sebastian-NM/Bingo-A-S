@@ -158,7 +158,7 @@ def buscarCarton():
 
     idCarton = Entry(consultarCarton, bg="white", fg="black",
                      textvariable=idCartonCartones_StringVar, width="25")
-    idCarton.insert(0, "ENCC004")
+    idCarton.insert(0, "XXXX000")
     idCarton.config(state=DISABLED)
     idCarton.bind("<Button-1>", clickIdentificar)
     idCarton.place(x=205, y=22)
