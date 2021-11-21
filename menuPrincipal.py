@@ -29,8 +29,6 @@ Salidas: generarCartones (interfaz)
 Restriciones: menuPrincipal (interfaz)
 '''
 # Abre la interfaz gráfica generarCartones
-
-
 def generarCartonesMenu():
     global menuPrincipal
     menuPrincipal.destroy()
@@ -43,8 +41,6 @@ Salidas: consultarCarton (interfaz)
 Restriciones: menuPrincipal (interfaz)
 '''
 # Abre la interfaz gráfica consultarCarton
-
-
 def consultarCartonMenu():
     global menuPrincipal
     menuPrincipal.destroy()
@@ -57,8 +53,6 @@ Salidas: registrarJugador (interfaz)
 Restriciones: menuPrincipal (interfaz)
 '''
 # Abre la interfaz gráfica registrarJugador
-
-
 def registrarJugadorMenu():
     global menuPrincipal
     menuPrincipal.destroy()
@@ -71,8 +65,6 @@ Salidas: v (interfaz)
 Restriciones: menuPrincipal (interfaz)
 '''
 # Abre la interfaz gráfica enviarCartones
-
-
 def enviarCartonMenu():
     global menuPrincipal
     menuPrincipal.destroy()
@@ -85,8 +77,6 @@ Salidas: iniciarJuego (interfaz)
 Restriciones: menuPrincipal (interfaz)
 '''
 # Abre la interfaz gráfica iniciarJuego
-
-
 def iniciarUnaPartidaMenu():
     global menuPrincipal
     menuPrincipal.destroy()
@@ -99,8 +89,6 @@ Salidas: graficos (interfaz)
 Restriciones: menuPrincipal (interfaz)
 '''
 # Abre la interfaz gráfica graficos
-
-
 def graficosMenu():
     global menuPrincipal
     menuPrincipal.destroy()
@@ -113,8 +101,6 @@ Salidas: destrución de menu principal (interfaz)
 Restriciones: menuPrincipal (interfaz)
 '''
 # Destruye la interfaz gráfica menuPrincipal
-
-
 def cerrarAplicacionFuncion():
     global menuPrincipal
     menuPrincipal.destroy()

@@ -52,7 +52,7 @@ def cantarJuego():
 
     tipoJuego, premio = logic.enviarDatosJuego()
 
-    if(logic.cantarNumeros(tipoJuego) == False):
+    if(logic.iniciarPartida(tipoJuego) == False):
         numero = logic.ultimoNumeroCantado()
         textBox.configure(state='normal')
         if(primero == True):

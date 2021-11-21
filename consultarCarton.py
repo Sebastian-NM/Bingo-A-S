@@ -41,8 +41,8 @@ def mostrarCarton():
     if(idCartonText != "" and idCartonText != "NCC004"):
         if(len(idCartonText) == 6):
             if(logic.existeCarpetaCartones()):
-                if(logic.existeImagenEnCarpeta(idCartonText)):
-                    if(logic.identificarJugadorConCarton(idCartonText)):
+                if(logic.buscarImagenEnCarpeta(idCartonText)):
+                    if(logic.buscarIdentificadorJugador(idCartonText)):
                         cartonJugador = logic.extraerIdentificadorJugadorConCarton(
                             idCartonText)
                         mensajeExito.destroy()
