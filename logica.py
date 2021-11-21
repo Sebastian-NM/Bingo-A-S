@@ -5,8 +5,6 @@ Estudiantes: Angela González Solano, 2021445876
              Sebastián Navarro Martinez, 2021579550
 '''
 
-
-# Importar Librerías
 import matplotlib .pyplot as plt
 import os
 import menuPrincipal as MP
@@ -30,7 +28,7 @@ from datetime import date
 from datetime import datetime
 
 
-# Inicio variables gobales
+#Variables gobales
 cartones = {}
 jugadores = {}
 jugadoresConCartones = {}
@@ -43,6 +41,8 @@ tipoJuego = ""
 premio = ""
 
 
+
+#RECURSIVO
 '''
 Entradas: numero
 Salidas: numero (str)
@@ -50,14 +50,13 @@ Restriciones: numero (int)
               numero > 3
 '''
 # Crea tres números aleatorios
-
-
 def crearNumero(numero=3):
     if(numero == 0):
         return ""
     return str(randint(0, 9))+crearNumero(numero-1)
 
 
+#RECURSIVO
 '''
 Entradas: numero
 Salidas: letras (str)
@@ -65,8 +64,6 @@ Restriciones: numero (int)
               numero > 3
 '''
 # Crea 3 letras aleatorias para la identificación
-
-
 def crearLetras(numero=3):
     abecedario = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
                   "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -85,22 +82,18 @@ Restriciones: crearLetras (función)
               crearNumero (función)
 '''
 # Crea el identificador de los cartones
-
-
 def crearIdententificador():
     identificardor = crearLetras() + crearNumero()
-
     return identificardor
 
 
+#RECURSIVO
 '''
 Entradas: pLista, pIdentificador
 Salidas: pIdentificador existe en pLista (bool)
 Restriciones: pLista (lista), pIdentificador (str)
 '''
 # Indica si pIdentificador existe en pLista
-
-
 def identificadorRepetido(pLista, pIdentificador):
     if(pLista == []):
         return False
@@ -110,6 +103,7 @@ def identificadorRepetido(pLista, pIdentificador):
         return identificadorRepetido(pLista[1:], pIdentificador)
 
 
+#RECURSIVO
 '''
 Entradas: pNum
 Salidas: listaIdentificadores (list)
@@ -117,8 +111,6 @@ Restriciones: pNum (int)
               pNum > 0
 '''
 # Crea una lista de posibles identificadores
-
-
 def crearListaIdentificadores(pNum):
     if(pNum == 0):
         return []
@@ -133,14 +125,11 @@ Restriciones: pNum (int)
               pNum > 0
 '''
 # Crea una lista con identificadores no repetidos
-
-
 def crearListaIdentificadoresNoRepetidos(pNum):
     lista = crearListaIdentificadores(pNum)
     indice = 0
 
     while(indice < len(lista)):
-
         if(identificadorRepetido(lista[indice+1:], lista[indice])):
             indice = 0
             lista = crearListaIdentificadores(pNum)
@@ -149,6 +138,7 @@ def crearListaIdentificadoresNoRepetidos(pNum):
     return lista
 
 
+#RECURSIVO
 '''
 Entradas: pInicio, pFin
 Salidas: listaNumeros (list)
@@ -158,8 +148,6 @@ Restriciones: pInicio (int)
               pFin > 0
 '''
 # Crea 5 números aleatorios segun pInicio y pFin
-
-
 def crearNumerosRandomCarton(pInicio, pFin, Numero=5):
     if(Numero == 0):
         return []
@@ -167,14 +155,13 @@ def crearNumerosRandomCarton(pInicio, pFin, Numero=5):
         return [randrange(pInicio, pFin)]+crearNumerosRandomCarton(pInicio, pFin, Numero-1)
 
 
+#RECURSIVO
 '''
 Entradas: pLista
 Salidas: pLista tiene un elemento repetido (bool)
 Restriciones: pLista (list), pLista !=[]
 '''
 # Indica si algun número del carton esta repetido
-
-
 def recorrerElementosCarton(pLista):
     if(pLista == []):
         return False
@@ -184,6 +171,7 @@ def recorrerElementosCarton(pLista):
         return recorrerElementosCarton(pLista[1:])
 
 
+#RECURSIVO
 '''
 Entradas: pInicio, pFin
 Salidas: fila (list)
@@ -193,8 +181,6 @@ Restriciones: pInicio (int)
              pFin > 0
 '''
 # Crea un carton
-
-
 def crearNumerosCarton(pInicio, pFin):
     fila = []
     while(True):
@@ -212,8 +198,6 @@ Restriciones: carton (matriz)
               vector !=[]
 '''
 # Crea y acomoda los elementos del cartón
-
-
 def crearElementosCarton():
     carton = []
     vector = []
@@ -244,9 +228,7 @@ Salidas: cartones (matriz)
 Restriciones: pNum (int)
               pNum >= 0
 '''
-# Crea los cartones
-
-
+#Crea los cartones
 def crearCarton(pNum):
     global cartones
     global listaIdentificadores
@@ -269,8 +251,6 @@ Restriciones: cartones (file)
               cartones debe de existir la carpeta
 '''
 # Identifica si existe la carpeta cartones
-
-
 def existeCarpetaCartones():
     if os.path.isdir('cartones'):
         return True
@@ -285,8 +265,6 @@ Restriciones: cartones (list)
               listaIdentificadores (list)
 '''
 # Elimina la carpeta de cartones
-
-
 def eliminarCarpetaCartones():
     global cartones
     global listaIdentificadores
@@ -328,8 +306,6 @@ Restriciones: cartones (dict)
               listaGanadores !=[]
 '''
 # Limpia las variables globales
-
-
 def eliminarRegistros():
     global cartones
     global jugadores
@@ -361,8 +337,6 @@ Restriciones: jugadores (file)
               jugadores debe de existir
 '''
 # Identifica si existe la archivo jugadores
-
-
 def existeArchivoJugadores():
     if os.path.isfile('jugadores/jugadores.csv'):
         return True
@@ -380,8 +354,6 @@ Restriciones:
 - jugadores debe de existir
 '''
 # Identifica si existe la carpeta jugadores
-
-
 def existeCarpetaJugadores():
     if os.path.isdir('jugadores'):
         return True
@@ -396,8 +368,6 @@ Restriciones: pCedula (str)
               pCedula !=""
 '''
 # Indica si existe jugador
-
-
 def existeJugador(pCedula):
     if(existeCarpetaJugadores() == False):
         return False
@@ -462,8 +432,6 @@ Salidas: jugadoresConCartones (dict)
 Restriciones: pCedula (str)
 '''
 # Identifica si existe pCedula
-
-
 def jugadorConCarton(pCedula):
     global jugadoresConCartones
 
@@ -485,7 +453,6 @@ Restriciones: pCedula (str)
 
 def crearJugadorConCartones(pCedula):
     global jugadoresConCartones
-
     jugadoresConCartones[pCedula] = []
 
 
@@ -496,15 +463,13 @@ Restriciones: pCedula (str)
               pCedula !=""
 '''
 # Indica cuantos cartones tiene un jugador
-
-
 def cantidadCartonesJugador(pCedula):
     global jugadoresConCartones
     cartones = jugadoresConCartones[pCedula]
-
     return len(cartones)
 
 
+#RECURSIVO
 '''
 Entradas: pLista, pIdentificador
 Salidas: posicion de donde se encuentra el identificador (int)
@@ -512,8 +477,6 @@ Restriciones: pLista (list)
               pIdentificador
 '''
 # Identidica la posicion de identificador en la lista
-
-
 def posicionIdentificador(pLista, pIdentificador, posicion=0):
     if(pLista == []):
         return 0
@@ -530,8 +493,6 @@ Restriciones: pIdentificadores (list)
               pIdentificadores !=[]
 '''
 # Elimina los identificadores usados
-
-
 def eliminarIdentificadores(pIdentificadores):
     global identificadoresLibres
     indice = 0
@@ -551,8 +512,6 @@ Restriciones: identificadoresLibres (list)
               identificadoresLibres !=[]
 '''
 # Indica la cantidad de identificadores libres hay en el sistema
-
-
 def cantidadIdentificadoresLibres():
     global identificadoresLibres
     return len(identificadoresLibres)
@@ -588,12 +547,9 @@ Salidas: jugador (dict)
 Restriciones: pIdentificador (str)
               pIdentificador != ""
 '''
-
-
 def extraerIdentificadorJugadorConCarton(pIdentificador):
     global jugadoresConCartones
     global jugadores
-
     for jugador in jugadoresConCartones:
         for identificadores in jugadoresConCartones[jugador]:
             if(identificadores == pIdentificador):
@@ -606,8 +562,6 @@ Salidas: existe identificador asosiado con jugador(bool)
 Restriciones: pIdentificador 
 '''
 # Identifica si identificador asosiado con jugador
-
-
 def identificarJugadorConCarton(pIdentificador):
     global jugadoresConCartones
 
@@ -625,8 +579,6 @@ Salidas: enviar cartones a jugador (mail)
 Restriciones: pCedula (str), pCartones (list)
 '''
 # Asigna los cartones a un jugador
-
-
 def agragerCartonesAJugadores(pCedula, pCartones):
     global jugadoresConCartones
     global identificadoresLibres
@@ -653,8 +605,6 @@ Restriciones: jugadores (list)
               jugadores !=[]
 '''
 # Extrae la cantidad de jugadores existentes en memoria
-
-
 def extraerCantidadJugadores():
     global jugadores
     return len(jugadores)
@@ -675,7 +625,6 @@ Restriciones:
 
 def listaJugadores():
     global jugadores
-
     if(existeCarpetaJugadores() == False):
         os.mkdir("jugadores")
         archivo = open("jugadores/jugadores.csv", "a")
@@ -699,13 +648,13 @@ Restriciones: pIdentificador (str)
               pIdentificador != ""
 '''
 # Recorre todos los elementos existentes de la carpeta cartones
-
-
 def existeImagenEnCarpeta(pIdentificador):
     archivos = [carpeta for carpeta in os.listdir(
         "cartones/") if os.path.isfile(os.path.join("cartones/", carpeta))]
 
     return identificadorRepetido(archivos, pIdentificador+".png")
+
+
 
 
 '''
@@ -714,7 +663,7 @@ Salidas: correo (mail)
 Restriciones: pCedula (str)
               pCedula != ""
 '''
-# Envia los cartones asignados segun pCedula
+# Envia los cartones asignados segun pCedula. 
 
 
 def enviarCartonesPorCorreo(pCedula):
@@ -731,8 +680,8 @@ def enviarCartonesPorCorreo(pCedula):
     msg['From'] = sender_email
     msg['To'] = receiver_email
 
-    msgText = MIMEText('Muchas gracias ' + jugadores[pCedula][0] +
-                       " por participar en el juego, te adjuntamos tus cartones.\n¡Mucha suerte!")
+    msgText = MIMEText('Hola estimado(a) ' + jugadores[pCedula][0] +
+                       " ¡se te han asignado los siguientes cartones!")
     msg.attach(msgText)
 
     indice = 0
@@ -1063,8 +1012,8 @@ def enviarCorreoGanadores(pNombre, pCarton, pDestinatario):
     msg['From'] = sender_email
     msg['To'] = receiver_email
 
-    msgText = MIMEText('¡Mucar felicidades '+pNombre + "!\nEres un ganador en el tipo de juego "+str(tipoJuego) +
-                       ", y tu premio es: "+str(premio)+"\nPor favor ponte en contacto con nosotros para reclamar tu premio.")
+    msgText = MIMEText('¡Hola '+pNombre + "!\n has ganado la partida de bingo en la modalidad de "+str(tipoJuego) +
+                       ". Tu premio corresponde a: "+str(premio) + "\n¡Felicidades!")
     msg.attach(msgText)
 
     with open('cartones/'+pCarton+'.png', 'rb') as fp:
