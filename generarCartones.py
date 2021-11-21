@@ -72,9 +72,11 @@ Salidas: se borra el contenido de cantidadCartones (accion)
 Restriciones: event debe tener una interaccion con cantidadCartones para su uso (accion)
 '''
 # Eliminación del contenido de cantidadCartones
-# def clickCantidadCartones(event):
-# ntryCantidadCartones.config(state=NORMAL)
-# ntryCantidadCartones.delete(0,END)
+
+
+def clickCantidadCartones(event):
+    ntryCantidadCartones.config(state=NORMAL)
+    ntryCantidadCartones.delete(0, END)
 
 
 '''
