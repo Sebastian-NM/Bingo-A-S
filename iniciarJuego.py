@@ -127,7 +127,7 @@ def jugar():
     label4.place(x=15, y=30)
 
     choices = ['Jugar en X', 'Cuatro esquinas', 'Cartón lleno', 'Jugar en Z']
-    configuracionJuego = ttk.Combobox(iniciarJuego, values=choices, state="readonly")
+    configuracionJuego = ttk.Combobox(iniciarJuego, values=choices)
     configuracionJuego.current(0)
     configuracionJuego.place(x=100, y=30)
 
