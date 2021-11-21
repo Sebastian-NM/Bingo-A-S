@@ -1401,30 +1401,6 @@ def extraerTiposPartidasJugadas():
 
 
 '''
-Entradas: tiposPartidasJugadas
-Salidas: juegos (list)
-Restriciones: tiposPartidasJugadas (list)
-              tiposPartidasJugadas no puede estar vacía
-'''
-# Clasifica las partidas segun las veces que se jugaron
-
-
-def crearDatosTiposPartidasJugadas():
-    tiposPartidasJugadas = extraerTiposPartidasJugadas()
-    tipoJuego = ["X", "Z", "E", "L"]
-    juegos = []
-    indice = 0
-    cantidad = 0
-
-    while(indice < len(tipoJuego)):
-        cantidad = contarCaracter(tiposPartidasJugadas, tipoJuego[indice])
-        juegos.append([tipoJuego[indice], cantidad])
-        indice = indice + 1
-
-    return juegos
-
-
-'''
 Entradas: pLista, pCaracter 
 Salidas: cantidad (int)
 Restriciones: pLista (list)
@@ -1854,132 +1830,27 @@ def contarHoras(pLista):
 
 
 '''
-Entradas: horasPartidas
-Salidas: listaFecha (list)
-Restriciones: horasPartidas (list)
-              horasPartidas no puede estar vacío
+Entradas: tiposPartidasJugadas
+Salidas: juegos (list)
+Restriciones: tiposPartidasJugadas (list)
+              tiposPartidasJugadas no puede estar vacía
 '''
+# Clasifica las partidas segun las veces que se jugaron
 
 
-def crearDatosHorasPartidas():
-    horasPartidas = extraerHoras()
+def crearDatosTiposPartidasJugadas():
+    tiposPartidasJugadas = extraerTiposPartidasJugadas()
+    tipoJuego = ["X", "Z", "E", "L"]
+    juegos = []
     indice = 0
-    horas = ""
-    listaFecha = []
+    cantidad = 0
 
-    while(indice < len(horasPartidas)):
-        horas = horasPartidas[indice].split(":")
-        listaFecha.append(int(horas[0]))
+    while(indice < len(tipoJuego)):
+        cantidad = contarCaracter(tiposPartidasJugadas, tipoJuego[indice])
+        juegos.append([tipoJuego[indice], cantidad])
         indice = indice + 1
 
-    listaFecha.sort()
-    listaFecha = contarHoras(listaFecha)
-
-    return listaFecha
-
-
-'''
-Entradas: horasPartidas
-Salidas: horas (list)
-Restriciones: horasPartidas (list)
-              horasPartidas no puede estar vacía
-'''
-# Clasifica las horas extraidas de bitacora
-
-
-def clasificacionHorasPartidas():
-    horasPartidas = crearDatosHorasPartidas()
-    indice = 0
-    horas = {"manana": 0, "tarde": 0, "noche": 0}
-
-    while(indice < len(horasPartidas)):
-        if(horasPartidas[indice][0] >= 5 and horasPartidas[indice][0] <= 11):
-            horas["manana"] += horasPartidas[indice][1]
-        elif(horasPartidas[indice][0] >= 12 and horasPartidas[indice][0] <= 18):
-            horas["tarde"] += horasPartidas[indice][1]
-        elif((horasPartidas[indice][0] >= 19 and horasPartidas[indice][0] <= 23) or (horasPartidas[indice][0] >= 0 and horasPartidas[indice][0] <= 4)):
-            horas["noche"] += horasPartidas[indice][1]
-        indice = indice + 1
-
-    return horas
-
-
-'''
-Entradas: datos
-Salidas: grafico de distribución de horarios donde se ha jugado (graph)
-Restriciones: datos (list)
-              datos no puede estar vacía
-'''
-# Crea un grafico segun la distribución de horarios donde se ha jugado (mañana, tarde, noche).
-
-
-def graficoClasificacionHorasPartidas():
-    datos = clasificacionHorasPartidas()
-    indice = 0
-    actividades = []
-    divisiones = []
-
-    for tiempo in datos:
-        divisiones.append(datos[tiempo])
-        actividades.append(tiempo)
-
-    ypos = np.arange(len(actividades))
-
-    plt.xticks(ypos, actividades)
-    plt.bar(ypos, divisiones, width=0.5)
-    plt.title("Distribución de horarios donde se ha jugado")
-    plt.ylabel("Cantidad de partidas jugadas")
-    plt.xlabel("Horarios")
-    plt.show()
-
-
-'''
-Entradas: lista
-Salidas: elementosMayores (list)
-Restriciones: lista (list)
-              lista no puede estar vacía
-'''
-# Crea una lista con los mejores jugadores
-
-
-def identificarJugadoresGanadores():
-    lista = crearDatosJugadoresGanadores()
-    elementosMayores = []
-    indice = 0
-    parada = 5
-
-    while(indice < parada):
-        elementoMayor = encontrarMayor(lista)
-        lista = eliminarMayor(lista, elementoMayor)
-        elementosMayores.append(elementoMayor)
-        indice = indice + 1
-
-    return elementosMayores
-
-
-'''
-Entradas: datos 
-Salidas: grafico de la frecuencia de configuración de partidas (graph)
-Restriciones: datos (list)
-              datos no puede estar vacio
-'''
-# Crea el grafico de top 5 de los jugadores que han ganado en más ocasiones.
-
-
-def graficoJugadoresGanadores():
-    datos = identificarJugadoresGanadores()
-    indice = 0
-    actividades = []
-    divisiones = []
-
-    while(indice < len(datos)):
-        actividades.append(datos[indice][0])
-        divisiones.append(datos[indice][1])
-        indice = indice + 1
-
-    plt.pie(divisiones, labels=actividades, startangle=90, autopct='%1.1f%%')
-    plt.title("Top 5 de los jugadores que han ganado en más ocasiones.")
-    plt.show()
+    return juegos
 
 
 '''
@@ -2008,264 +1879,25 @@ def graficoFrecuenciaConfiguracion():
 
 
 '''
-Entradas: bitacora
-Salidas: numerosCantados (list)
-Restriciones: bitacora (file)
-              bitacora debe existir
-              bitacora no puede estar vacio
+Entradas: horasPartidas
+Salidas: listaFecha (list)
+Restriciones: horasPartidas (list)
+              horasPartidas no puede estar vacío
 '''
-# Extrae los números cantados en configuración X
 
 
-def extraerNumerosCantadosEnX():
-    numerosCantados = []
-    with open("bitacoraPartidas/bitacora.csv") as csvarchivo:
-        entrada = csv.reader(csvarchivo, delimiter=";")
-        for columna in entrada:
-            if(columna[0] == 'X'):
-                output = eval(columna[1])
-                numerosCantados += output
-
-    return numerosCantados
-
-
-'''
-Entradas: ganadores, numeros
-Salidas: cantidadNumeros (list)
-Restriciones: ganadores (list)
-              ganadores no puede estar vacio
-              numeros (list)
-              numeros no puede estar vacio
-'''
-# Acomoda los números cantados en configuración en X
-
-
-def crearDatosNumerosCantadosEnX():
-    ganadores = extraerNumerosCantadosEnX()
-    numeros = eliminarElementosRepetidosBitacora(ganadores)
-    cantidadNumeros = []
+def crearDatosHorasPartidas():
+    horasPartidas = extraerHoras()
     indice = 0
-    cantidad = 0
+    horas = ""
+    listaFecha = []
 
-    while(indice < len(numeros)):
-        cantidad = contarCaracter(ganadores, numeros[indice])
-        cantidadNumeros.append([numeros[indice], cantidad])
+    while(indice < len(horasPartidas)):
+        horas = horasPartidas[indice].split(":")
+        listaFecha.append(int(horas[0]))
         indice = indice + 1
 
-    return cantidadNumeros
+    listaFecha.sort()
+    listaFecha = contarHoras(listaFecha)
 
-
-'''
-Entradas: bitacora
-Salidas: numerosCantados (list)
-Restriciones: bitacora (file)
-              bitacora debe existir
-              bitacora no puede estar vacio
-'''
-# Extrae los números cantados en configuración Z
-
-
-def extraerNumerosCantadosEnZ():
-    numerosCantados = []
-    with open("bitacoraPartidas/bitacora.csv") as csvarchivo:
-        entrada = csv.reader(csvarchivo, delimiter=";")
-        for columna in entrada:
-            if(columna[0] == 'Z'):
-                output = eval(columna[1])
-                numerosCantados += output
-
-    return numerosCantados
-
-
-'''
-Entradas: ganadores, numeros
-Salidas: cantidadNumeros (list)
-Restriciones: ganadores (list)
-              ganadores no puede estar vacio
-              numeros (list)
-              numeros no puede estar vacio
-'''
-# Acomoda los números cantados en configuración en Z
-
-
-def crearDatosNumerosCantadosEnZ():
-    ganadores = extraerNumerosCantadosEnZ()
-    numeros = eliminarElementosRepetidosBitacora(ganadores)
-    cantidadNumeros = []
-    indice = 0
-    cantidad = 0
-
-    while(indice < len(numeros)):
-        cantidad = contarCaracter(ganadores, numeros[indice])
-        cantidadNumeros.append([numeros[indice], cantidad])
-        indice = indice + 1
-
-    return cantidadNumeros
-
-
-'''
-Entradas: bitacora
-Salidas: numerosCantados (list)
-Restriciones: bitacora (file)
-              bitacora debe existir
-              bitacora no puede estar vacio
-'''
-# Extrae los números cantados en configuración E
-
-
-def extraerNumerosCantadosEnE():
-    numerosCantados = []
-    with open("bitacoraPartidas/bitacora.csv") as csvarchivo:
-        entrada = csv.reader(csvarchivo, delimiter=";")
-        for columna in entrada:
-            if(columna[0] == 'E'):
-                output = eval(columna[1])
-                numerosCantados += output
-
-    return numerosCantados
-
-
-'''
-Entradas: ganadores, numeros
-Salidas: cantidadNumeros (list)
-Restriciones: ganadores (list)
-              ganadores no puede estar vacio
-              numeros (list)
-              numeros no puede estar vacio
-'''
-# Acomoda los números cantados en configuración en E
-
-
-def crearDatosNumerosCantadosEnE():
-    ganadores = extraerNumerosCantadosEnE()
-    numeros = eliminarElementosRepetidosBitacora(ganadores)
-    cantidadNumeros = []
-    indice = 0
-    cantidad = 0
-
-    while(indice < len(numeros)):
-        cantidad = contarCaracter(ganadores, numeros[indice])
-        cantidadNumeros.append([numeros[indice], cantidad])
-        indice = indice + 1
-
-    return cantidadNumeros
-
-
-'''
-Entradas: bitacora
-Salidas: numerosCantados (list)
-Restriciones: bitacora (file)
-              bitacora debe existir
-              bitacora no puede estar vacio
-'''
-# Extrae los números cantados en configuración L
-
-
-def extraerNumerosCantadosEnL():
-    numerosCantados = []
-    with open("bitacoraPartidas/bitacora.csv") as csvarchivo:
-        entrada = csv.reader(csvarchivo, delimiter=";")
-        for columna in entrada:
-            if(columna[0] == 'L'):
-                output = eval(columna[1])
-                numerosCantados += output
-
-    return numerosCantados
-
-
-'''
-Entradas: ganadores, numeros
-Salidas: cantidadNumeros (list)
-Restriciones: ganadores (list)
-              ganadores no puede estar vacio
-              numeros (list)
-              numeros no puede estar vacio
-'''
-# Acomoda los números cantados en configuración en L
-
-
-def crearDatosNumerosCantadosEnL():
-    ganadores = extraerNumerosCantadosEnL()
-    numeros = eliminarElementosRepetidosBitacora(ganadores)
-    cantidadNumeros = []
-    indice = 0
-    cantidad = 0
-
-    while(indice < len(numeros)):
-        cantidad = contarCaracter(ganadores, numeros[indice])
-        cantidadNumeros.append([numeros[indice], cantidad])
-        indice = indice + 1
-
-    return cantidadNumeros
-
-
-'''
-Entradas: pLista
-Salidas: listaNueva (list)
-Restriciones: pLista (list)
-              pLista no puede estar vacio
-'''
-# Extrae los números importantes cantados
-
-
-def extrarNumerosMayoresImportantes(pLista):
-    indiceA = 0
-    listaNueva = []
-
-    while(indiceA < len(pLista)):
-        listaNueva.append(pLista[indiceA][0])
-        indiceA = indiceA + 1
-    return listaNueva
-
-
-'''
-Entradas: pListaA, pListaB
-Salidas: listaNueva (list)
-Restriciones: pListaA (list)
-              pListaA no puede estar vacía
-              pListaB (list)
-              pListaB no puede estar vacía
-'''
-# Crear una lista con los números parecidos a la primera posición de pListaA
-
-
-def acomadarNumerosImportantes(pListaA, pListaB):
-    indiceA = 0
-    indiceB = 0
-    listaNueva = []
-
-    while(indiceA < len(pListaA)):
-        while(indiceB < len(pListaB)):
-            if(pListaA[indiceA][0] == pListaB[indiceB][0]):
-                listaNueva.append(pListaB[indiceB][1])
-            indiceB = indiceB + 1
-        indiceB = 0
-        indiceA = indiceA + 1
-    return listaNueva
-
-
-'''
-Entradas: listaMayores 
-Salidas: grafico de top 10 números contados por configuracion (graph)
-Restriciones: listaMayores (list)
-              listaMayores no puede estar vacio
-'''
-# Crea el top 10 de números que más se han cantado por configuración de partida
-
-
-def graficoTopNumerosContadosPorConfiguracion():
-    listaMayores = identificarNumerosMayores()
-    numerosEnX = crearDatosNumerosCantadosEnX()
-    numerosEnX = acomadarNumerosImportantes(listaMayores, numerosEnX)
-    numerosEnZ = crearDatosNumerosCantadosEnZ()
-    numerosEnZ = acomadarNumerosImportantes(listaMayores, numerosEnZ)
-    numerosEnE = crearDatosNumerosCantadosEnE()
-    numerosEnE = acomadarNumerosImportantes(listaMayores, numerosEnE)
-    numerosEnL = crearDatosNumerosCantadosEnL()
-    numerosEnL = acomadarNumerosImportantes(listaMayores, numerosEnL)
-
-    listaMayores = extrarNumerosMayoresImportantes(listaMayores)
-    df = pd.DataFrame({'Juego en equis': numerosEnX, 'Juego en zeta': numerosEnZ,
-                      'Juego cuatro esquinas': numerosEnE, 'Juego cartón lleno': numerosEnL, }, index=listaMayores)
-    ax = df.plot.bar(rot=0)
-    plt.show()
+    return listaFecha
