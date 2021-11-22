@@ -10,7 +10,7 @@ Estudiantes: Angela González Solano, 2021445876
 from tkinter import *
 from tkinter import ttk
 import menuPrincipal as MP
-import logica as logic
+import funcionalidades as func
 import ganadores as winners
 
 
@@ -50,10 +50,10 @@ def cantarJuego():
     global cantarNumeros
     global primero
 
-    tipoJuego, premio = logic.enviarDatosJuego()
+    tipoJuego, premio = func.enviarDatosJuego()
 
-    if(logic.cantarNumeros(tipoJuego) == False):
-        numero = logic.ultimoNumeroCantado()
+    if(func.cantarNumeros(tipoJuego) == False):
+        numero = func.ultimoNumeroCantado()
         textBox.configure(state='normal')
         if(primero == True):
             primero = False
@@ -63,7 +63,7 @@ def cantarJuego():
             textBox.insert(END, ","+str(numero))
             textBox.configure(state='disable')
     else:
-        logic.enviarEmailGanadores()
+        func.enviarEmailGanadores()
         cantarNumeros.configure(state='disable')
         textBox.configure(state='normal')
 
@@ -100,9 +100,9 @@ def iniciarPartidaBingo():
     global primero
 
     primero = True
-    logic.copiaCartones()
-    tipoJuego, premio = logic.enviarDatosJuego()
-    cantidadCartones = logic.enviarTotalCartones()
+    func.copiaCartones()
+    tipoJuego, premio = func.enviarDatosJuego()
+    cantidadCartones = func.enviarTotalCartones()
     iniciarPartida = Tk()
     iniciarPartida.iconbitmap("bingo.ico")
     iniciarPartida.title("Partida en Proceso")
@@ -144,7 +144,7 @@ def iniciarPartidaBingo():
     label8.place(x=320, y=210)
 
     label9 = Label(iniciarPartida, text="Total de jugadores: "+str(
-        logic.extraerCantidadJugadores()), fg="black", bg="#B0E0E6", font=("Finland", 10))
+        func.extraerCantidadJugadores()), fg="black", bg="#B0E0E6", font=("Finland", 10))
     label9.place(x=320, y=185)
 
     iniciarPartida.mainloop()

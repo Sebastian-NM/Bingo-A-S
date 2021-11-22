@@ -9,7 +9,7 @@ Estudiantes: Angela González Solano, 2021445876
 # Importar Librerías
 from tkinter import *
 import menuPrincipal as MP
-import logica as logic
+import funcionalidades as func
 import re
 
 
@@ -51,8 +51,8 @@ def validarRegistro():
     if(nomJugadorText != "" and cedJugadorText != "" and emailJugadorText != "" and nomJugadorText != "Luis Soto" and emailJugadorText != "luis@gmail.com" and cedJugadorText != "103250410"):
         if(len(cedJugadorText) == 9 and cedJugadorText.isnumeric()):
             if(validarEmailJugador(emailJugadorText)):
-                if(logic.existeJugador(cedJugadorText) == False):
-                    logic.crearJugador(
+                if(func.existeJugador(cedJugadorText) == False):
+                    func.crearJugador(
                         nomJugadorText, cedJugadorText, emailJugadorText)
                     mensaje.destroy()
                     mensaje = Label(registrarJugador, text="¡Registro existoso!",

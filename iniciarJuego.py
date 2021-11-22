@@ -10,7 +10,7 @@ Estudiantes: Angela González Solano, 2021445876
 from tkinter import *
 from tkinter import ttk
 import menuPrincipal as MP
-import logica as logic
+import funcionalidades as func
 import partida as game
 
 
@@ -42,8 +42,8 @@ def generarJuego():
     configuracionJuegoText = configuracionJuego.get()
 
     if(premioText != "100000" and premioText != ""):
-        if(logic.enviarTotalCartones() != 0):
-            logic.guardarDatosJuego(configuracionJuegoText, premioText)
+        if(func.enviarTotalCartones() != 0):
+            func.guardarDatosJuego(configuracionJuegoText, premioText)
             mensaje.destroy()
             mensaje = Label(
                 iniciarJuego, text=configuracionJuegoText, bg="white", fg="black")
@@ -103,7 +103,7 @@ def jugar():
     global mensaje
     global configuracionJuego
 
-    logic.limpiarVariables()
+    func.limpiarVariables()
     iniciarJuego = Tk()
     iniciarJuego.iconbitmap("bingo.ico")
     iniciarJuego.title("Iniciar Juego")
@@ -128,7 +128,7 @@ def jugar():
 
     choices = ['Jugar en X', 'Cuatro esquinas', 'Cartón lleno', 'Jugar en Z']
     configuracionJuego = ttk.Combobox(iniciarJuego, values=choices)
-    configuracionJuego.current(0) 
+    configuracionJuego.current(0)
     configuracionJuego.place(x=100, y=30)
 
     label5 = Label(iniciarJuego, text="Premio:", bg="#B0E0E6", fg="black")

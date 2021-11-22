@@ -9,7 +9,7 @@ Estudiantes: Angela González Solano, 2021445876
 # Importar Librerías
 from tkinter import *
 import menuPrincipal
-import logica as logic
+import funcionalidades as func
 
 
 # Inicio variables globales
@@ -25,7 +25,7 @@ Restriciones: graficoNumerosCantados (graph)
 
 
 def graficoTopNumerosCantados():
-    logic.graficoNumerosCantados()
+    func.graficoNumerosCantados()
 
 
 '''
@@ -38,7 +38,7 @@ Restriciones:
 
 
 def graficoFrecuenciaConfiguracion():
-    logic.graficoFrecuenciaConfiguracion()
+    func.graficoFrecuenciaConfiguracion()
 
 
 '''

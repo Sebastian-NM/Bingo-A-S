@@ -10,7 +10,7 @@ Estudiantes: Angela González Solano, 2021445876
 from tkinter import *
 from tkinter import ttk
 import menuPrincipal as MP
-import logica as logic
+import funcionalidades as func
 
 
 # Inicio variables globales
@@ -30,7 +30,7 @@ Restriciones: numero (int)
 
 
 def cantarJuego():
-    numero = logic.ultimoNumeroCantado()
+    numero = func.ultimoNumeroCantado()
     textBox.configure(state='normal')
     textBox.insert(END, str(numero)+" ")
     textBox.configure(state='disable')
@@ -63,9 +63,9 @@ def ganadoresBingo():
     global textBox
     global cantarNumero
 
-    logic.copiaCartones()
-    tipoJuego, premio = logic.enviarDatosJuego()
-    cantidadCartones = logic.enviarTotalCartones()
+    func.copiaCartones()
+    tipoJuego, premio = func.enviarDatosJuego()
+    cantidadCartones = func.enviarTotalCartones()
     cartonesGanadores = Tk()
     cartonesGanadores.iconbitmap("bingo.ico")
     cartonesGanadores.title("Cartones Ganadores")
@@ -96,9 +96,9 @@ def ganadoresBingo():
                    borderwidth=1, relief="solid")
     textBox.place(x=20, y=55)
 
-    lista = logic.retornarGanadores()
+    lista = func.retornarGanadores()
 
-    logic.crearRegistro()
+    func.crearRegistro()
 
     indice = 0
     while(indice < len(lista)):

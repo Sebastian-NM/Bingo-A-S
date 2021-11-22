@@ -9,7 +9,7 @@ Estudiantes: Angela González Solano, 2021445876
 from tkinter import *
 from PIL import Image, ImageTk
 import menuPrincipal as MP
-import logica as logic
+import funcionalidades as func
 
 
 # Inicio variables globales
@@ -40,10 +40,10 @@ def mostrarCarton():
 
     if(idCartonText != "" and idCartonText != "NCC004"):
         if(len(idCartonText) == 6):
-            if(logic.existeCarpetaCartones()):
-                if(logic.existeImagenEnCarpeta(idCartonText)):
-                    if(logic.identificarJugadorConCarton(idCartonText)):
-                        cartonJugador = logic.extraerIdentificadorJugadorConCarton(
+            if(func.existeCarpetaCartones()):
+                if(func.existeImagenEnCarpeta(idCartonText)):
+                    if(func.identificarJugadorConCarton(idCartonText)):
+                        cartonJugador = func.extraerIdentificadorJugadorConCarton(
                             idCartonText)
                         mensajeExito.destroy()
                         mensajeExito = Label(consultarCarton, text="Dueño del cartón: "+str(cartonJugador[1])+" , cédula: "+str(

@@ -9,7 +9,7 @@ Estudiantes: Angela González Solano, 2021445876
 # Importar Librerías
 from tkinter import *
 import menuPrincipal as MP
-import logica as logic
+import funcionalidades as func
 
 
 # Inicio variables globales
@@ -43,32 +43,33 @@ def generarEnvioCartones():
         if(cantidadCartonesText.isnumeric() and (int(cantidadCartonesText) >= 1 and int(cantidadCartonesText) <= 5)):
             cantidadCartonesText = int(cantidadCartonesText)
             if(cedJugadorText.isnumeric() and len(cedJugadorText) == 9):
-                if(logic.existeCarpetaJugadores()):
-                    identificadores = logic.cantidadIdentificadoresLibres()
+                if(func.existeCarpetaJugadores()):
+                    identificadores = func.cantidadIdentificadoresLibres()
                     if(identificadores != 0):
-                        if(logic.existeJugador(cedJugadorText)):
-                            if(logic.jugadorConCarton(cedJugadorText) == False):
-                                identificadores = logic.cantidadIdentificadoresLibres()
+                        if(func.existeJugador(cedJugadorText)):
+                            if(func.jugadorConCarton(cedJugadorText) == False):
+                                identificadores = func.cantidadIdentificadoresLibres()
                                 if(int(cantidadCartonesText) <= identificadores):
-                                    logic.crearJugadorConCartones(
+                                    func.crearJugadorConCartones(
                                         cedJugadorText)
-                                    logic.agragerCartonesAJugadores(
+                                    func.agragerCartonesAJugadores(
                                         cedJugadorText, cantidadCartonesText)
                                     cantidadElementosCreados(
                                         cantidadCartonesText)
                                 else:
                                     mensaje.destroy()
                                     mensaje = Label(
-                                        enviarCartones, text="No existen tantos cartones para repartir", bg="white", fg="black")
-                                    mensaje.place(x=85, y=65)
+                                        enviarCartones, text="No existen tantos cartones para repartir", fg="black", bg="#B0E0E6", font=(
+                                            "Finland", 10, 'bold'))
+                                    mensaje.place(x=85, y=80)
                             else:
-                                identificadores = logic.cantidadIdentificadoresLibres()
-                                cantidadIdentificadoresJugador = logic.cantidadCartonesJugador(
+                                identificadores = func.cantidadIdentificadoresLibres()
+                                cantidadIdentificadoresJugador = func.cantidadCartonesJugador(
                                     cedJugadorText)
                                 if(cantidadIdentificadoresJugador < 5):
                                     cartonesFaltantes = 5 - cantidadIdentificadoresJugador
                                     if(cantidadCartonesText <= cartonesFaltantes):
-                                        logic.agragerCartonesAJugadores(
+                                        func.agragerCartonesAJugadores(
                                             cedJugadorText, cantidadCartonesText)
                                         cantidadElementosCreados(
                                             cantidadCartonesText)
@@ -192,7 +193,7 @@ def enviarCartonesJugador():
     global cedJugador
     global mensaje
 
-    logic.listaIdentificadoresLibres()
+    func.listaIdentificadoresLibres()
     enviarCartones = Tk()
     enviarCartones.iconbitmap("bingo.ico")
     enviarCartones.title("Enviar Cartones")

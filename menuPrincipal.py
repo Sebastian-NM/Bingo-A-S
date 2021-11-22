@@ -16,7 +16,7 @@ import registrarJugador
 import enviarCartones
 import iniciarJuego
 import graficos
-import logica as logic
+import funcionalidades as func
 
 
 # Inicio variables globales
@@ -129,7 +129,7 @@ Restriciones: menuPrincipal (interfaz)
 
 
 def inicio():
-    logic.listaJugadores()
+    func.listaJugadores()
 
     global menuPrincipal
     menuPrincipal = Tk()

@@ -8,8 +8,7 @@ Estudiantes: Angela González Solano, 2021445876
 # Librería
 from tkinter import *
 import menuPrincipal as MP
-import logica as logic
-
+import funcionalidades as func
 
 # Variables globales
 winGenerarCartones = ""
@@ -37,7 +36,7 @@ def generarFuncion():
         if(ntryCantidadCartonesGetter.isnumeric()):
             ntryCantidadCartonesGetter = int(ntryCantidadCartonesGetter)
             if(ntryCantidadCartonesGetter >= 1 and ntryCantidadCartonesGetter <= 500):
-                logic.imprimirMatrices(ntryCantidadCartonesGetter)
+                func.imprimirMatrices(ntryCantidadCartonesGetter)
 
                 if(ntryCantidadCartonesGetter == 1):
                     lblInfoError.destroy()
@@ -106,8 +105,8 @@ def interfaz():
     global ntryCantidadCartones
     global lblInfoError
 
-    logic.eliminarRegistros()
-    logic.eliminarCarpetaCartones()
+    func.eliminarRegistros()
+    func.eliminarCarpetaCartones()
     winGenerarCartones = Tk()
     winGenerarCartones.iconbitmap("bingo.ico")
     winGenerarCartones.title("Generar Cartones")
