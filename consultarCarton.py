@@ -41,8 +41,8 @@ def mostrarCarton():
     if(idCartonText != "" and idCartonText != "NCC004"):
         if(len(idCartonText) == 6):
             if(logic.existeCarpetaCartones()):
-                if(logic.buscarImagenEnCarpeta(idCartonText)):
-                    if(logic.buscarIdentificadorJugador(idCartonText)):
+                if(logic.existeImagenEnCarpeta(idCartonText)):
+                    if(logic.identificarJugadorConCarton(idCartonText)):
                         cartonJugador = logic.extraerIdentificadorJugadorConCarton(
                             idCartonText)
                         mensajeExito.destroy()
@@ -158,7 +158,7 @@ def buscarCarton():
 
     idCarton = Entry(consultarCarton, bg="white", fg="black",
                      textvariable=idCartonCartones_StringVar, width="25")
-    idCarton.insert(0, "XXXX000")
+    idCarton.insert(0, "ENCC004")
     idCarton.config(state=DISABLED)
     idCarton.bind("<Button-1>", clickIdentificar)
     idCarton.place(x=205, y=22)

@@ -9,6 +9,8 @@ import matplotlib .pyplot as plt
 import os
 import menuPrincipal as MP
 import numpy as np
+import matplotlib.pyplot as plt
+import csv
 import pandas as pd
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -24,19 +26,19 @@ from PIL import ImageFont
 from PIL import ImageDraw
 from datetime import date
 from datetime import datetime
-import matplotlib.pyplot as plt
-import csv
 
+
+# Variables gobales
 cartones = {}
-identificadoresLibres = []
-listaNumerosCantados = []
+jugadores = {}
+jugadoresConCartones = {}
 cartonesJuego = {}
 listaIdentificadores = []
+identificadoresLibres = []
+listaNumerosCantados = []
 listaGanadores = []
 tipoJuego = ""
 premio = ""
-jugadores = {}
-jugadoresConCartones = {}
 
 
 # RECURSIVO
@@ -116,30 +118,13 @@ Restriciones: pNum (int)
               pNum > 0
 '''
 # Crea una lista de posibles identificadores
+
+
 def crearListaIdentificadores(pNum):
     if(pNum == 0):
         return []
     else:
         return [crearIdententificador()] + crearListaIdentificadores(pNum-1)
-
-
-# RECURSIVO
-'''
-Entradas: pInicio, pFin
-Salidas: listaNumeros (list)
-Restriciones: pInicio (int)
-              pInicio > 0
-              pFin (int)
-              pFin > 0
-'''
-# Crea 5 números aleatorios segun pInicio y pFin
-
-
-def crearNumerosRandomCarton(pInicio, pFin, Numero=5):
-    if(Numero == 0):
-        return []
-    else:
-        return [randrange(pInicio, pFin)]+crearNumerosRandomCarton(pInicio, pFin, Numero-1)
 
 
 '''
@@ -164,21 +149,23 @@ def crearListaIdentificadoresNoRepetidos(pNum):
     return lista
 
 
-
+# RECURSIVO
 '''
-Entradas: cartones
-Salidas: cartones (bool)
-Restriciones: cartones (file)
-              cartones debe de existir la carpeta
+Entradas: pInicio, pFin
+Salidas: listaNumeros (list)
+Restriciones: pInicio (int)
+              pInicio > 0
+              pFin (int)
+              pFin > 0
 '''
-# Identifica si existe la carpeta cartones
+# Crea 5 números aleatorios segun pInicio y pFin
 
 
-def existeCarpetaCartones():
-    if os.path.isdir('cartones'):
-        return True
+def crearNumerosRandomCarton(pInicio, pFin, Numero=5):
+    if(Numero == 0):
+        return []
     else:
-        return False
+        return [randrange(pInicio, pFin)]+crearNumerosRandomCarton(pInicio, pFin, Numero-1)
 
 
 # RECURSIVO
@@ -279,6 +266,22 @@ def crearCarton(pNum):
 
 
 '''
+Entradas: cartones
+Salidas: cartones (bool)
+Restriciones: cartones (file)
+              cartones debe de existir la carpeta
+'''
+# Identifica si existe la carpeta cartones
+
+
+def existeCarpetaCartones():
+    if os.path.isdir('cartones'):
+        return True
+    else:
+        return False
+
+
+'''
 Entradas: cartones, listaIdentificadores
 Salidas: eliminar carpeta de cartones (file)
 Restriciones: cartones (list)
@@ -328,28 +331,30 @@ Restriciones: cartones (dict)
               listaGanadores !=[]
 '''
 # Limpia las variables globales
+
+
 def eliminarRegistros():
     global cartones
     global jugadores
+    global jugadoresConCartones
+    global identificadoresLibres
     global listaIdentificadores
     global tipoJuego
     global premio
     global listaNumerosCantados
     global cartonesJuego
     global listaGanadores
-    global jugadoresConCartones
-    global identificadoresLibres
 
     cartones = {}
+    jugadores = {}
+    jugadoresConCartones = {}
+    identificadoresLibres = []
     listaIdentificadores = []
     tipoJuego = ""
     premio = ""
     listaNumerosCantados = []
     cartonesJuego = {}
     listaGanadores = []
-    jugadores = {}
-    jugadoresConCartones = {}
-    identificadoresLibres = []
 
 
 '''
@@ -359,8 +364,14 @@ Restriciones: jugadores (file)
               jugadores debe de existir
 '''
 # Identifica si existe la archivo jugadores
+
+
 def existeArchivoJugadores():
-    return os.path.isfile('jugadores/jugadores.csv')
+    if os.path.isfile('jugadores/jugadores.csv'):
+        return True
+    else:
+        return False
+
 
 '''
 Entradas:
@@ -421,6 +432,7 @@ def crearJugador(pNombre, pCedula, pCorreo):
     elif(existeArchivoJugadores() == False):
         rmtree("jugadores")
         os.mkdir("jugadores")
+
     archivo = open("jugadores/jugadores.csv", "a")
     archivo.write(pCedula)
     archivo.write(";")
@@ -436,6 +448,8 @@ Salidas: correo(str)
 Restriciones: pCedula (str), pCedula !=""
 '''
 # Función que extrae el correo del jugador
+
+
 def extraerCorreoJugador(pCedula):
     with open("jugadores/jugadores.csv") as csvarchivo:
         #entrada (file)
@@ -1045,11 +1059,12 @@ def enviarCorreoGanadores(pNombre, pCarton, pDestinatario):
     receiver_email = pDestinatario
 
     msg = MIMEMultipart()
-    msg['Subject'] = '¡Has ganado el bingo!'
+    msg['Subject'] = 'Bingo, ¡felicidades eres un ganador!'
     msg['From'] = sender_email
     msg['To'] = receiver_email
 
-    msgText = MIMEText('¡Felicidades '+pNombre + "!\n has ganado en "+str(tipoJuego) + ". Tu premio corresponde a: "+str(premio))
+    msgText = MIMEText('¡Hola '+pNombre + "!\n has ganado la partida de bingo en la modalidad de "+str(tipoJuego) +
+                       ". Tu premio corresponde a: "+str(premio) + "\n¡Felicidades!")
     msg.attach(msgText)
 
     with open('cartones/'+pCarton+'.png', 'rb') as fp:
